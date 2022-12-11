@@ -2,3 +2,4 @@ Hello world!
 First line
 Second line
 Third line
+Steve and Alex are best friends. 
