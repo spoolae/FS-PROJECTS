@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Hello world!
 First line
 Second line
@@ -5,3 +6,6 @@ Third line
 Steve and Alex are best friends. 
 Margo and Mary are cousines.
 Joe and Lesya are classmates.
+=======
+Hello world!
+>>>>>>> Clear-HelloWorld-File
