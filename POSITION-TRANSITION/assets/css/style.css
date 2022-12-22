@@ -1,0 +1,88 @@
+:root {
+  font-size: 24px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  width: 100%;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+main {
+  margin: 5vmin;
+}
+.user-card {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+.user-card__img {
+  clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+  );
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.user-card__name {
+  padding: 15px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s linear 0.5s;
+}
+
+.user-card__name::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 25%;
+  top: 0;
+  width: 0;
+  height: 3px;
+  background-color: black;
+  transition: width 0.25s ease-in-out;
+}
+
+.user-card__name::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 25%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: black;
+  transition: width 0.25s ease-in-out 0.25s;
+}
+
+.user-card__name:hover {
+  color: goldenrod;
+}
+
+.user-card__name:hover::before {
+  width: 50%;
+}
+
+.user-card__name:hover::after {
+  width: 50%;
+}
