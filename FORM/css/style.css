@@ -1,0 +1,106 @@
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: #63738a;
+}
+
+form {
+  width: 50%;
+  min-width: 500px;
+  background-color: #f2f3f7;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 50px auto 25px auto;
+  padding: 30px 35px;
+  border-radius: 10px;
+  box-shadow: 0px 11px 30px 0px rgba(52, 52, 74, 0.3);
+}
+
+form h2 {
+  font-weight: 500;
+  font-size: 36px;
+  text-align: center;
+  overflow: hidden;
+  color: #4f4f4f;
+}
+
+h2:before,
+h2:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 3px;
+  background-color: #d4d4d4;
+  position: relative;
+}
+
+h2:before {
+  margin-left: -100%;
+  left: -14px;
+}
+
+h2:after {
+  margin-right: -100%;
+  right: -14px;
+}
+
+form p {
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: #8b8b8b;
+  margin: 15px 0 25px 0;
+}
+
+form input {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 3px;
+  border-width: 1px;
+}
+
+form .short-input {
+  display: inline-block;
+  width: calc(50% - 17px);
+}
+
+form .short-input:first-of-type {
+  margin-right: 30px;
+}
+
+form .long-input {
+  display: block;
+}
+
+form .checkbox {
+  width: auto;
+}
+
+form label {
+  color: #8b8b8b;
+}
+
+form a {
+  color: #58b358;
+  text-decoration: none;
+}
+
+form .button {
+  background-image: linear-gradient(to bottom, #64bb64, #49af49);
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.sign-in {
+  text-align: center;
+}
+
+.sign-in p,
+a {
+  color: white;
+  display: inline-block;
+}
