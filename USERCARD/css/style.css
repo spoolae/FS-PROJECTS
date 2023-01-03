@@ -1,0 +1,110 @@
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: #bdc4cd;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 22px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgb(79, 79, 79);
+}
+
+.user-card {
+  width: 400px;
+  background-color: aliceblue;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 25px auto;
+  box-shadow: 0px 5px 30px 3px rgba(43, 44, 51, 0.15);
+}
+
+.user-card .avatar {
+  width: 100%;
+  height: 175px;
+  background-color: #63738a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-card .avatar img {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  box-shadow: 0px 0px 0px 4px #63738a;
+}
+
+.user-card .title {
+  margin-top: 75px;
+  text-align: center;
+}
+
+.user-card .title span {
+  margin-right: 5px;
+}
+
+.user-card .title p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.user-card .buttons,
+.paragraph {
+  width: 80%;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.user-card .buttons {
+  padding: 15px;
+  border-top: 3px solid #bdc4cd;
+  border-bottom: 3px solid #bdc4cd;
+}
+
+.user-card .buttons button {
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 10px 25px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.user-card .buttons button:nth-child(1) {
+  background-image: linear-gradient(to bottom, #64bb64, #49af49);
+}
+
+.user-card .buttons button:nth-child(2) {
+  background-image: linear-gradient(to bottom, #7688a2, #63738a);
+}
+
+.user-card .social {
+  height: 75px;
+  margin-top: 25px;
+  background-color: #63738a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-card .social a {
+  font-size: 32px;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}
