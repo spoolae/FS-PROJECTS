@@ -20,7 +20,7 @@ function calculate() {
   }
 
   if (res) {
-    if (res < 0 && res % 4 !== 0 && res % 7 !== 0) {
+    if (res <= 0 || res % 4 !== 0 || res % 7 !== 0) {
       alert("Lose");
     } else {
       alert("Win - Число додатнє, парне, кратне 4 і 7 одночасно");
