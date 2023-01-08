@@ -3,6 +3,11 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -303,11 +308,8 @@ a {
 .sertificate .inputs {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
-}
-
-.sertificate input {
-  margin-right: 15px;
+  justify-content: center;
+  gap: 15px;
 }
 
 footer {
@@ -324,6 +326,7 @@ footer {
 footer .info {
   width: 60%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 25px;
 }

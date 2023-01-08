@@ -1,3 +1,54 @@
+@media screen and (max-width: 480px) {
+  .welcome {
+    background-image: url("/images/welcome-bg-mb.png");
+    position: relative;
+  }
+
+  .welcome section {
+    width: 85vw;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: start;
+  }
+
+  .gallery div h3 {
+    margin-top: 25px;
+  }
+
+  .about {
+    width: 85vw;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about .columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin: 50px 0;
+  }
+
+  .about .columns p {
+    width: 80vw;
+  }
+
+  .offer article {
+    top: 85%;
+  }
+
+  footer .info div,
+  footer .info h2,
+  footer .bottom-line {
+    width: 80vw;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 640px) {
   h1 {
     font-size: 26px;
@@ -143,7 +194,7 @@
   }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (min-width: 641px) and (max-width: 960px) {
   h1 {
     font-size: 34px;
   }
@@ -178,8 +229,153 @@
   }
 
   .welcome .logo img {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .gallery div {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery div h3 {
+    margin-top: 25px;
+  }
+
+  .gallery div #gift {
+    height: 50vh;
+    object-fit: contain;
+  }
+
+  .gallery div li {
+    font-size: 14px;
+    padding: 8px 16px;
+    margin: 10px 5px;
+  }
+
+  .gallery div li span {
+    font-size: 12px;
+  }
+
+  .about {
+    text-align: center;
+    margin: 35px auto;
+  }
+
+  .about h3 {
+    text-align: start;
+  }
+
+  .about .columns {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about .columns p {
+    min-width: 150px;
+    text-align: start;
+  }
+
+  .offer article {
+    height: 65%;
+    width: 65%;
+  }
+
+  .offer article .card {
+    padding: 20px 35px;
+  }
+
+  .offer article .card p {
+    margin: 20px 0;
+  }
+
+  .steps .items-container {
+    height: auto;
+    background: none;
+    margin: 25px 0;
+  }
+
+  .steps .item {
+    width: 80%;
+    margin-top: 25px;
+    padding: 15px;
+    border: 3px dashed #eed7d8;
+    border-radius: 25px;
+  }
+
+  .sertificate {
+    height: fit-content;
+  }
+
+  .sertificate .title {
+    flex-direction: column;
+  }
+
+  .sertificate .title div {
+    width: 80%;
+  }
+
+  .sertificate .title {
+    flex-direction: column-reverse;
+  }
+
+  .sertificate .inputs {
+    width: 80%;
+  }
+
+  .sertificate input {
+    margin: 10px;
+  }
+
+  footer {
+    height: 50vh;
+  }
+
+  footer .info {
+    width: 80%;
+  }
+
+  footer .bottom-line {
+    font-size: 12px;
+    bottom: 15px;
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1280px) {
+  h1 {
+    font-size: 38px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 19px;
+  }
+
+  button {
+    font-size: 18px;
+    border-radius: 50px;
+    padding: 15px 45px;
+  }
+
+  input {
+    font-size: 18px;
+    line-height: 36px;
+    padding: 10px 25px;
+    width: 250px;
   }
 
   .gallery div {
@@ -218,21 +414,13 @@
   }
 
   .about .columns p {
-    min-width: 150px;
+    min-width: 250px;
     text-align: start;
   }
 
   .offer article {
-    height: 90%;
-    width: 80%;
-  }
-
-  .offer article .card {
-    padding: 10px 25px;
-  }
-
-  .offer article .card p {
-    margin: 10px 0;
+    height: 60%;
+    width: 55%;
   }
 
   .steps .items-container {
