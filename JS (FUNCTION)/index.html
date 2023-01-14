@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>JS</title>
+  </head>
+  <body>
+    <div>
+      <h3>Завдання 1</h3>
+      <label>
+        Введіть число:
+        <input type="number" id="num" />
+      </label>
+      <br />
+      <button
+        type="button"
+        onclick="checkOddEven(parseInt(document.getElementById('num').value))"
+      >
+        Перевірити чи число парне
+      </button>
+    </div>
+
+    <div>
+      <h3>Завдання 2</h3>
+
+      <label>
+        Введіть значення х:
+        <div>
+          <input type="radio" name="xType" id="xString" value="string" />
+          <label for="xString">string</label>
+          <input type="text" id="xValueString" />
+        </div>
+        <div>
+          <input type="radio" name="xType" id="xNumber" value="number" />
+          <label for="xNumber">number</label>
+          <input type="number" id="xValueNumber" />
+        </div>
+        <div>
+          <input type="radio" name="xType" id="xBoolean" value="boolean" />
+          <label for="xBoolean">boolean</label>
+          <select id="xValueBoolean">
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </div>
+        <div>
+          <input type="radio" name="xType" id="xNull" value="null" />
+          <label for="xNull">null</label>
+        </div>
+        <div>
+          <input type="radio" name="xType" id="xUndefined" value="undefined" />
+          <label for="xUndefined">undefined</label>
+        </div>
+      </label>
+
+      <br />
+
+      <label>
+        Введіть значення у:
+        <div>
+          <input type="radio" name="yType" id="yString" value="string" />
+          <label for="yString">string</label>
+          <input type="text" id="yValueString" />
+        </div>
+        <div>
+          <input type="radio" name="yType" id="yNumber" value="number" />
+          <label for="yNumber">number</label>
+          <input type="number" id="yValueNumber" />
+        </div>
+        <div>
+          <input type="radio" name="yType" id="yBoolean" value="boolean" />
+          <label for="yBoolean">boolean</label>
+          <select id="yValueBoolean">
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </div>
+        <div>
+          <input type="radio" name="yType" id="yNull" value="null" />
+          <label for="yNull">null</label>
+        </div>
+        <div>
+          <input type="radio" name="yType" id="yUndefined" value="undefined" />
+          <label for="yUndefined">undefined</label>
+        </div>
+      </label>
+
+      <br />
+      <button type="button" onclick="compare()">Порівняти дані змінних</button>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
