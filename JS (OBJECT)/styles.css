@@ -1,0 +1,21 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+input[type="number"] {
+  padding: 3px;
+  border-radius: 3px;
+}
+
+label {
+  display: inline-block;
+  margin: 5px 0 10px 0;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 3px;
+  min-width: 150px;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>JS</title>
+  </head>
+  <body>
+    <h3>Чайник</h3>
+    <div>
+      <label for="brand">Бренд:</label>
+      <span id="brand"></span>
+    </div>
+    <div>
+      <label for="max-volume">Максимальний об'єм:</label>
+      <span id="max-volume"></span>
+      <span>л</span>
+    </div>
+    <div>
+      <label for="min-volume">Мінімальний об'єм:</label>
+      <span id="min-volume"></span>
+      <span>л</span>
+    </div>
+    <div>
+      <label for="current-volume">Води в чайнику:</label>
+      <span id="current-volume"></span>
+      <span>л</span>
+    </div>
+    <div>
+      <label for="is-on">Чи включений чайник:</label>
+      <span id="is-on"></span>
+    </div>
+    <div>
+      <button onclick="addWater()">Додати води</button>
+      <input type="number" id="add-water-value" min="1" max="5" value="1" />
+    </div>
+    <div>
+      <button onclick="makeTea()">Зробити чай</button>
+      <input type="number" id="make-tea-value" min="1" max="5" value="1" />
+    </div>
+    <div>
+      <button onclick="turnOn()">Включити чайник</button>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
