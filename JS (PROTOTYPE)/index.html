@@ -12,11 +12,13 @@
       <p>Назва: <input type="text" id="name" /></p>
       <p>
         Ціна:
-        <input type="number" id="price" /> грн
+        <input type="number" id="price" />
+        <span>грн</span>
       </p>
       <p>
         Кількість:
-        <input type="number" id="quantity" /> шт
+        <input type="number" id="quantity" />
+        <span>шт</span>
       </p>
       <button id="create-product" onclick="createProduct()">
         Створити продукт
@@ -27,7 +29,9 @@
     <br />
     <div>
       <p>
-        Знижка: <input type="number" id="sale" min="1" max="100" value="1" /> %
+        Знижка:
+        <input type="number" id="sale" min="1" max="100" value="1" />
+        <span>%</span>
       </p>
       <button id="set-sale" onclick="setSale()">Встановити знижку</button>
     </div>
@@ -35,7 +39,8 @@
     <div>
       <p>
         Кількість:
-        <input type="number" id="amount" /> шт
+        <input type="number" id="amount" />
+        <span>шт</span>
       </p>
       <button id="buy-product" onclick="buyProduct()">Купити продукт</button>
     </div>

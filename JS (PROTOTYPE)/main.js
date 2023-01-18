@@ -5,7 +5,9 @@ function Product(name, price, quantity) {
 }
 
 Product.prototype.showInfo = function () {
-  return `Назва: ${this.name}, Ціна: ${this.price} грн, Кількість: ${this.quantity} шт`;
+  return `Назва: ${this.name}, Ціна: ${this.price.toFixed(2)} грн, Кількість: ${
+    this.quantity
+  } шт`;
 };
 
 Product.prototype.setSaleToPrice = function (value = 0) {
@@ -23,11 +25,16 @@ Product.prototype.buyAmountProduct = function (amountValue) {
 };
 
 let product;
+let nameInput = document.getElementById("name");
+let priceInput = document.getElementById("price");
+let quantityInput = document.getElementById("quantity");
+let saleInput = document.getElementById("sale");
+let amountInput = document.getElementById("amount");
 
 function createProduct() {
-  let name = document.getElementById("name").value;
-  let price = parseFloat(document.getElementById("price").value);
-  let quantity = parseInt(document.getElementById("quantity").value);
+  let name = nameInput.value;
+  let price = parseFloat(priceInput.value);
+  let quantity = parseInt(quantityInput.value);
   if (!name || !price || !quantity) {
     alert("Заповніть всі поля!");
     return;
@@ -37,26 +44,24 @@ function createProduct() {
 }
 
 function setSale() {
-  let sale = parseFloat(document.getElementById("sale").value);
+  let sale = parseFloat(saleInput.value);
   let newPrice = product.setSaleToPrice(sale);
   document.getElementById("product-info").innerHTML = product.showInfo();
-  alert(`Ціна зі знижкою: ${newPrice} грн`);
+  alert(`Ціна зі знижкою: ${newPrice.toFixed(2)} грн`);
 }
 
 function buyProduct() {
-  let amount = parseInt(document.getElementById("amount").value);
+  let amount = parseInt(amountInput.value);
   let totalCost = product.buyAmountProduct(amount);
   if (totalCost) {
     document.getElementById("product-info").innerHTML = product.showInfo();
     document.getElementById(
       "total-cost"
-    ).innerHTML = `Загальна ціна: ${totalCost} грн`;
+    ).innerHTML = `Загальна ціна: ${totalCost.toFixed(2)} грн`;
   } else {
     alert("Недостатньо товарів!");
   }
 }
-
-let saleInput = document.getElementById("sale");
 
 saleInput.addEventListener("input", function () {
   if (this.value < 1) this.value = 1;

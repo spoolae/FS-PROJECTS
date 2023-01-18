@@ -7,15 +7,28 @@ input[type="number"],
 input[type="text"] {
   padding: 3px;
   border-radius: 3px;
+  position: absolute;
+  left: 100px;
+  width: 160px;
 }
 
 label {
   margin: 5px 0 10px 0;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  background-color: aqua;
+}
+
+span {
+  position: absolute;
+  padding-top: 3px;
+  left: 280px;
 }
 
 button {
   margin-top: 10px;
   padding: 10px;
   border-radius: 3px;
-  min-width: 250px;
+  width: 250px;
 }
