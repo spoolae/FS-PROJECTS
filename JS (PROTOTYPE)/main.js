@@ -5,11 +5,11 @@ function Product(name, price, quantity) {
 }
 
 Product.prototype.showInfo = function () {
-  return `Name: ${this.name}, Price: ${this.price}, Quantity: ${this.quantity}`;
+  return `Назва: ${this.name}, Ціна: ${this.price} грн, Кількість: ${this.quantity} шт`;
 };
 
 Product.prototype.setSaleToPrice = function (value = 0) {
-  this.price -= value;
+  this.price -= (this.price * value) / 100;
   return this.price;
 };
 
@@ -28,6 +28,10 @@ function createProduct() {
   let name = document.getElementById("name").value;
   let price = parseFloat(document.getElementById("price").value);
   let quantity = parseInt(document.getElementById("quantity").value);
+  if (!name || !price || !quantity) {
+    alert("Заповніть всі поля!");
+    return;
+  }
   product = new Product(name, price, quantity);
   document.getElementById("product-info").innerHTML = product.showInfo();
 }
@@ -36,7 +40,7 @@ function setSale() {
   let sale = parseFloat(document.getElementById("sale").value);
   let newPrice = product.setSaleToPrice(sale);
   document.getElementById("product-info").innerHTML = product.showInfo();
-  alert(`New price: ${newPrice}`);
+  alert(`Ціна зі знижкою: ${newPrice} грн`);
 }
 
 function buyProduct() {
@@ -46,8 +50,15 @@ function buyProduct() {
     document.getElementById("product-info").innerHTML = product.showInfo();
     document.getElementById(
       "total-cost"
-    ).innerHTML = `Total cost: ${totalCost}`;
+    ).innerHTML = `Загальна ціна: ${totalCost} грн`;
   } else {
-    alert("Not enough quantity in stock!");
+    alert("Недостатньо товарів!");
   }
 }
+
+let saleInput = document.getElementById("sale");
+
+saleInput.addEventListener("input", function () {
+  if (this.value < 1) this.value = 1;
+  if (this.value > 100) this.value = 100;
+});
