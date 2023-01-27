@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+input {
+  width: 250px;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+label {
+  display: inline-block;
+  margin: 5px 0 10px 0;
+}
+
+button {
+  display: block;
+  width: 250px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 3px;
+}
