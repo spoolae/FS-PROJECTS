@@ -4,20 +4,26 @@ class RangeValidator {
     this.to = to;
   }
 
-  setFrom(from) {
-    this.from = from;
+  set from(from) {
+    if (from >= this.to) {
+      throw new Error("from має бути меншим за to");
+    }
+    this._from = from;
   }
 
-  getFrom() {
-    return this.from;
+  get from() {
+    return this._from;
   }
 
-  setTo(to) {
-    this.to = to;
+  set to(to) {
+    if (to <= this.from) {
+      throw new Error("to має бути більшим за from");
+    }
+    this._to = to;
   }
 
-  getTo() {
-    return this.to;
+  get to() {
+    return this._to;
   }
 
   getRange() {
@@ -32,13 +38,15 @@ class RangeValidator {
   }
 }
 
+let rangeValidator = new RangeValidator();
+
 try {
-  let rangeValidator = new RangeValidator();
-  rangeValidator.setFrom(5);
-  rangeValidator.setTo(15);
-  console.log(rangeValidator.getRange()); // [5, 15]
-  console.log(rangeValidator.validate(10)); // true
-  console.log(rangeValidator.validate(20)); // false
+  rangeValidator.from = 5;
+  rangeValidator.to = 15;
 } catch (error) {
-  console.error(error);
+  console.warn(error);
 }
+
+console.log(rangeValidator.getRange()); // [5, 15]
+console.log(rangeValidator.validate(10)); // true
+console.log(rangeValidator.validate(20)); // false
