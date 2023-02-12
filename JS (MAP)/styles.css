@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+input {
+  margin: 5px;
+  width: 300px;
+  padding: 10px 25px;
+  border-radius: 3px;
+}
+
+button {
+  margin: 5px;
+  width: 300px;
+  padding: 10px 25px;
+  border-radius: 3px;
+  cursor: pointer;
+}
