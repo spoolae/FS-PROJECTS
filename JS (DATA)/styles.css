@@ -1,0 +1,75 @@
+.flex-container {
+  display: flex;
+}
+
+.flex-container[data-flex-direction="row"] {
+  flex-direction: row;
+}
+
+.flex-container[data-flex-direction="row-reverse"] {
+  flex-direction: row-reverse;
+}
+
+.flex-container[data-flex-direction="column"] {
+  flex-direction: column;
+}
+
+.flex-container[data-flex-direction="column-reverse"] {
+  flex-direction: column-reverse;
+}
+
+* {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 50px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+button {
+  width: 160px;
+  height: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: white;
+  border: 3px solid lightskyblue;
+}
+
+button.selected {
+  background-color: lightskyblue;
+  color: white;
+}
+
+.flex-container {
+  width: 685px;
+  height: 280px;
+  background-color: white;
+  border: 3px solid lightskyblue;
+}
+
+.flex-container > div {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightskyblue;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 10px;
+}
