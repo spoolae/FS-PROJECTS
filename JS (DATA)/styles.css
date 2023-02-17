@@ -49,11 +49,6 @@ button {
   border: 3px solid lightskyblue;
 }
 
-button.selected {
-  background-color: lightskyblue;
-  color: white;
-}
-
 .flex-container {
   width: 685px;
   height: 280px;
