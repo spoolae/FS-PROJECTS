@@ -1,0 +1,41 @@
+.heading {
+  text-align: center;
+  color: teal;
+}
+.welcome {
+  padding: 10px;
+  margin: 5px;
+  color: tomato;
+  border: 2px solid tomato;
+}
+
+h1 {
+  font-size: 28px;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: white;
+  border: 3px solid tomato;
+}
