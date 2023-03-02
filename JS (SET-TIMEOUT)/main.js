@@ -1,6 +1,7 @@
 const openBtn = document.querySelector(".open-btn");
 const closeBtn = document.querySelector(".close-btn");
-const submitBtn = document.querySelector("form button");
+const submitBtn = document.querySelector("#submitBtn");
+const emailInput = document.querySelector("input[type='email']");
 
 function openPopup() {
   openBtn.disabled = true;
@@ -21,9 +22,13 @@ function closePopup() {
 function submitForm() {
   openBtn.disabled = true;
   openBtn.innerHTML = "Зачекайте...";
-  setTimeout(function () {
+  if (emailInput.checkValidity()) {
     alert("Ви успішно підписались на новини!");
     document.querySelector("form").reset();
     closePopup();
-  }, 3000);
+  } else {
+    alert("Будь ласка, введіть дійсну адресу електронної пошти.");
+    openBtn.disabled = false;
+    openBtn.innerHTML = "Підписатись на новини";
+  }
 }
