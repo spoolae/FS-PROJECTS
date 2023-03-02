@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>JS</title>
+  </head>
+  <body>
+    <section>
+      <div class="overlay"></div>
+      <div class="popup">
+        <h2>Унікальна пропозиція!</h2>
+        <p>Введіть свій email, щоб отримати більше інформації</p>
+        <form>
+          <input type="email" placeholder="ourproduct@ua24.com" required />
+          <button type="button" onClick="submitForm()">
+            Підписатися на новини
+          </button>
+        </form>
+        <button class="close-btn" onClick="closePopup()">Закрити</button>
+      </div>
+    </section>
+    <main>
+      <h1>Замовляйте наш продукт!</h1>
+      <p>Тільки сьогодні діє знижка <span>30%</span></p>
+      <button class="open-btn" onClick="openPopup()">Замовити</button>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
