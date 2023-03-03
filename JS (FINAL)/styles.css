@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #f2f2f2 50%, #ff676c 50%);
+  min-height: 100vh;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+img {
+  user-select: none;
+}
+
+h2 {
+  font-size: 48px;
+  font-family: 700;
+  color: #ff676c;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+header h2 {
+  top: 125px;
+  left: 0;
+  right: 0;
+}
+
+section h2 {
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 25px;
+}
+
+.cards {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  height: 280px;
+  width: 250px;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 30px -9px rgba(0, 0, 0, 0.25);
+}
+
+.user-card img {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 100px;
+  border: 4px solid #ffffff;
+  outline: 4px solid #ff676c;
+}
+
+.user-card h3 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.user-card a {
+  color: #ffffff;
+  background-color: #ff676c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  text-decoration: none;
+}
+
+.user-card .social-icons {
+  display: flex;
+  gap: 10px;
+}
