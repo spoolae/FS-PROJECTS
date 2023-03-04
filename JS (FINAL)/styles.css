@@ -4,9 +4,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #f2f2f2 50%, #ff676c 50%);
-  min-height: 100vh;
-  overflow: hidden;
+  overflow-y: hidden;
   background-repeat: no-repeat;
 }
 
@@ -23,6 +21,7 @@ h2 {
   justify-content: center;
   align-items: center;
   margin: auto;
+  position: fixed;
 }
 
 header h2 {
@@ -39,6 +38,15 @@ section h2 {
   padding: 25px;
 }
 
+.background {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: linear-gradient(to bottom, #f2f2f2 50%, #ff676c 50%);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
 .cards {
   width: fit-content;
   height: fit-content;
@@ -48,16 +56,17 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 35px;
+  padding: 0 75px;
 }
 
 .user-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  height: 280px;
+  height: 300px;
   width: 250px;
   padding: 25px;
   border-radius: 15px;
