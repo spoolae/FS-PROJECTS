@@ -8,7 +8,6 @@ fetch("data.json")
       const image = document.createElement("img");
       const name = document.createElement("h3");
       const socialIcons = document.createElement("div");
-
       card.classList.add("user-card");
       socialIcons.classList.add("social-icons");
 
@@ -36,7 +35,7 @@ fetch("data.json")
       ) {
         name.textContent = `${item.firstName} ${item.lastName}`;
       } else {
-        name.textContent = "Unknown User";
+        name.textContent = "Unknown Name";
       }
 
       item.contacts.forEach((contact) => {
@@ -56,6 +55,26 @@ fetch("data.json")
 
         iconLink.appendChild(icon);
         socialIcons.appendChild(iconLink);
+      });
+
+      card.addEventListener("click", () => {
+        const isActive = card.classList.contains("active");
+        const chooseActorText = document.querySelector("section h2");
+        const name = item.firstName ? item.firstName : "Unknown";
+        const lastName = item.lastName ? item.lastName : "Actor";
+
+        if (isActive) {
+          card.classList.remove("active");
+          chooseActorText.textContent = `Choose your actor`;
+        } else {
+          const activeCards = document.querySelectorAll(".active");
+          activeCards.forEach((activeCard) => {
+            activeCard.classList.remove("active");
+          });
+
+          card.classList.add("active");
+          chooseActorText.textContent = `You chose ${name} ${lastName}.`;
+        }
       });
 
       card.appendChild(image);
