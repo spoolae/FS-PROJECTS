@@ -11,12 +11,10 @@ fetch("data.json")
       card.classList.add("user-card");
       socialIcons.classList.add("social-icons");
 
-      // проверка наличия изображения
-      if (item.profilePicture && item.profilePicture.trim() !== "") {
+      if (item.profilePicture && item.profilePicture.trim()) {
         image.src = item.profilePicture;
         image.alt = `${item.firstName} ${item.lastName}'s profile picture`;
 
-        // обработка ошибки, если изображение не найдено
         image.onerror = () => {
           image.src = "default-avatar.jpg";
           image.alt = "Default avatar";
@@ -26,17 +24,10 @@ fetch("data.json")
         image.alt = "Default avatar";
       }
 
-      // проверка наличия имени пользователя
-      if (
-        item.firstName &&
-        item.firstName.trim() !== "" &&
-        item.lastName &&
-        item.lastName.trim() !== ""
-      ) {
-        name.textContent = `${item.firstName} ${item.lastName}`;
-      } else {
-        name.textContent = "Unknown Name";
-      }
+      name.textContent =
+        item.firstName && item.lastName
+          ? `${item.firstName} ${item.lastName}`
+          : "Unknown Name";
 
       item.contacts.forEach((contact) => {
         const iconLink = document.createElement("a");
@@ -65,7 +56,7 @@ fetch("data.json")
 
         if (isActive) {
           card.classList.remove("active");
-          chooseActorText.textContent = `Choose your actor`;
+          chooseActorText.textContent = "Choose your actor";
         } else {
           const activeCards = document.querySelectorAll(".active");
           activeCards.forEach((activeCard) => {
