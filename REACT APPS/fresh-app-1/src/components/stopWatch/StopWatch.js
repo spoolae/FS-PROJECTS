@@ -11,7 +11,7 @@ export const StopWatch = () => {
       setIsRunning(true);
       intervalRef.current = setInterval(() => {
         setTime((prevTime) => prevTime + 1);
-      }, 10);
+      }, 1000);
     }
   };
 
