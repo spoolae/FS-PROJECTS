@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <StopWatch />
-      <Counter />
+      <Counter initStep={10} />
     </div>
   );
 };

@@ -8,6 +8,7 @@
 }
 
 .stop-watch button {
+  min-width: 100px;
   margin: 5px;
   padding: 10px 25px;
   border-radius: 15px;

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-
-// import styles from "./Counter.module.scss";
+import styles from "./Counter.module.scss";
 
 class Counter extends Component {
-  state = {
-    count: 0,
-    step: 1,
-    mode: "add",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      step: props.initStep,
+      mode: "add",
+    };
+  }
 
   handleAddClick = () => {
     const { count, step, mode } = this.state;
@@ -29,11 +31,12 @@ class Counter extends Component {
   render() {
     const { count, step, mode } = this.state;
     const buttonText = mode === "add" ? `Add ${step}` : `Subtract ${step}`;
+    const buttonClass = mode === "add" ? "addButton" : "subtractButton";
+
     return (
-      <div className="counter">
-        <div>Current count: {count}</div>
-        <div>Step size: {step}</div>
-        <button onClick={this.handleAddClick}>{buttonText}</button>
+      <div className={styles.counter}>
+        <h1>Current count: {count}</h1>
+        <h3>Step size: {step}</h3>
         <div>
           <label htmlFor="stepInput">Step:</label>
           <input
@@ -43,6 +46,12 @@ class Counter extends Component {
             onChange={this.handleStepChange}
           />
         </div>
+        <button
+          className={`${styles.button} ${styles[buttonClass]}`}
+          onClick={this.handleAddClick}
+        >
+          {buttonText}
+        </button>
         <button onClick={this.handleModeChange}>Change mode</button>
       </div>
     );
