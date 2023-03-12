@@ -1,34 +1,55 @@
-import React, { useState, useRef } from "react";
+import React from "react";
+
 import "./StopWatchStyles.css";
 
-export const StopWatch = () => {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const intervalRef = useRef(null);
+export class StopWatch extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      time: 0,
+      isRunning: false,
+    };
+    this.intervalRef = null;
+  }
 
-  const handleStart = () => {
-    if (!isRunning) {
-      setIsRunning(true);
-      intervalRef.current = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
-      }, 1000);
+  componentDidMount() {
+    this.intervalRef = setInterval(() => {
+      if (this.state.isRunning) {
+        this.setState((prevState) => ({
+          time: prevState.time + 1,
+        }));
+      }
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalRef);
+  }
+
+  handleStart = () => {
+    if (!this.state.isRunning) {
+      this.setState({
+        isRunning: true,
+      });
     }
   };
 
-  const handleStop = () => {
-    if (isRunning) {
-      setIsRunning(false);
-      clearInterval(intervalRef.current);
+  handleStop = () => {
+    if (this.state.isRunning) {
+      this.setState({
+        isRunning: false,
+      });
     }
   };
 
-  const handleReset = () => {
-    setTime(0);
-    clearInterval(intervalRef.current);
-    setIsRunning(false);
+  handleReset = () => {
+    this.setState({
+      time: 0,
+      isRunning: false,
+    });
   };
 
-  const formatTime = (time) => {
+  formatTime = (time) => {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
@@ -40,16 +61,18 @@ export const StopWatch = () => {
     return `${paddedHours}:${paddedMinutes}:${paddedSeconds}`;
   };
 
-  return (
-    <div className="stop-watch">
-      <h1>StopWatch</h1>
-      <p>Time: {formatTime(time)}</p>
-      {isRunning ? (
-        <button onClick={handleStop}>Stop</button>
-      ) : (
-        <button onClick={handleStart}>Start</button>
-      )}
-      <button onClick={handleReset}>Reset</button>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="stop-watch">
+        <h1>StopWatch</h1>
+        <p>Time: {this.formatTime(this.state.time)}</p>
+        {this.state.isRunning ? (
+          <button onClick={this.handleStop}>Stop</button>
+        ) : (
+          <button onClick={this.handleStart}>Start</button>
+        )}
+        <button onClick={this.handleReset}>Reset</button>
+      </div>
+    );
+  }
+}
