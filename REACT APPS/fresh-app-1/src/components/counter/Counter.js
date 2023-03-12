@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+// import styles from "./Counter.module.scss";
+
 class Counter extends Component {
   state = {
     count: 0,
@@ -28,7 +30,7 @@ class Counter extends Component {
     const { count, step, mode } = this.state;
     const buttonText = mode === "add" ? `Add ${step}` : `Subtract ${step}`;
     return (
-      <div>
+      <div className="counter">
         <div>Current count: {count}</div>
         <div>Step size: {step}</div>
         <button onClick={this.handleAddClick}>{buttonText}</button>
