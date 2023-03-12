@@ -2,7 +2,7 @@ import React from "react";
 
 import "./StopWatchStyles.css";
 
-export class StopWatch extends React.Component {
+class StopWatch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,3 +76,5 @@ export class StopWatch extends React.Component {
     );
   }
 }
+
+export default StopWatch;
