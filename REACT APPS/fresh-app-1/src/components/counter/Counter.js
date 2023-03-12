@@ -1,7 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
 import styles from "./Counter.module.scss";
 
 class Counter extends Component {
+  static propTypes = {
+    initStep: PropTypes.number,
+    interval: PropTypes.number,
+    duration: PropTypes.number,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
