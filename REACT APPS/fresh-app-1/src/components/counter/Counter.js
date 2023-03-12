@@ -36,6 +36,9 @@ class Counter extends Component {
     const { interval, duration } = this.state;
     if (this.state.autoClicker) {
       clearInterval(this.state.autoClicker);
+      if (this.state.timeLeftTimerRunning) {
+        clearInterval(this.state.timeLeftTimerId);
+      }
       this.setState({ autoClicker: null, timeLeft: null });
     } else {
       const autoClicker = setInterval(() => {
@@ -49,9 +52,18 @@ class Counter extends Component {
       setTimeout(() => {
         clearInterval(autoClicker);
         clearInterval(timeLeftTimer);
-        this.setState({ autoClicker: null, timeLeft: null });
+        this.setState({
+          autoClicker: null,
+          timeLeft: null,
+          timeLeftTimerRunning: false,
+        });
       }, duration);
-      this.setState({ autoClicker, timeLeft: duration });
+      this.setState({
+        autoClicker,
+        timeLeft: duration,
+        timeLeftTimerId: timeLeftTimer,
+        timeLeftTimerRunning: true,
+      });
     }
   };
 
