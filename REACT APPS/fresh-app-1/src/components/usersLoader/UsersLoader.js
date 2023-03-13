@@ -13,6 +13,7 @@ class UsersLoader extends Component {
       currentPage: 1,
     };
   }
+
   load = () => {
     const { currentPage } = this.state;
     this.setState({ isPending: true });
@@ -25,41 +26,53 @@ class UsersLoader extends Component {
       .catch((error) => this.setState({ error }))
       .finally(() => this.setState({ isPending: false }));
   };
+
   componentDidMount() {
     this.load();
   }
+
   componentDidUpdate(prevProps, prevState) {
     const { currentPage } = this.state;
     if (currentPage !== prevState.currentPage) {
       this.load();
     }
   }
-  mapUsers = (user) => <li key={user.login.uuid}>{user.email}</li>;
+
+  mapUsers = (user) => (
+    <li key={user.login.uuid}>
+      {user.name.first} {user.name.last} ({user.gender}) {user.nat}:{" "}
+      <span>{user.email}</span>
+    </li>
+  );
+
   handlePrevBtn = () => {
     if (this.state.currentPage > 1) {
       this.setState((state) => ({ currentPage: state.currentPage - 1 }));
     }
   };
+
   handleNextBtn = () =>
     this.setState((state) => ({ currentPage: state.currentPage + 1 }));
+
   render() {
     const { users, isPending, error, currentPage } = this.state;
     if (error) {
-      return <h3>Error!</h3>;
+      return <div className={styles["users-loader"]}>Error!</div>;
     }
     if (isPending) {
-      return <h3>Loading...</h3>;
+      return <div className={styles["users-loader"]}>Loading...</div>;
     }
+
     return (
-      <section>
+      <div className={styles["users-loader"]}>
         <h2>Users List</h2>
         <div>
-          <button onClick={this.handlePrevBtn}>prev &lt; </button>
+          <button onClick={this.handlePrevBtn}>&lt; Prev</button>
           <strong> {currentPage} </strong>
-          <button onClick={this.handleNextBtn}> &gt; next</button>
+          <button onClick={this.handleNextBtn}> Next &gt;</button>
         </div>
         <ul>{users.map(this.mapUsers)}</ul>
-      </section>
+      </div>
     );
   }
 }
