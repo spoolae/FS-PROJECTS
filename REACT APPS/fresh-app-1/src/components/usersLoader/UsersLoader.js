@@ -18,7 +18,7 @@ class UsersLoader extends Component {
   load = () => {
     const { currentPage, selectedNationality, selectedGender } = this.state;
     this.setState({ isPending: true });
-    let url = `https://randomuser.me/api/?results=10&seed=fd2022-2-ajax&page=${currentPage}`;
+    let url = `https://randomuser.me/api/?results=10&page=${currentPage}`;
     if (selectedNationality) {
       url += `&nat=${selectedNationality}`;
     }
@@ -111,12 +111,12 @@ class UsersLoader extends Component {
           <label htmlFor="nationality-select">Nationality:</label>
           <select
             id="nationality-select"
-            onChange={this.handleNationalitySelect}
             value={this.state.selectedNationality}
+            onChange={this.handleNationalitySelect}
           >
-            {nationalities.map((nat) => (
-              <option key={nat} value={nat}>
-                {nat || "All"}
+            {nationalities.map((nationality) => (
+              <option key={nationality} value={nationality}>
+                {nationality || "All"}
               </option>
             ))}
           </select>
@@ -124,23 +124,29 @@ class UsersLoader extends Component {
         <div>
           <label htmlFor="gender-checkbox">Gender:</label>
           <input
-            type="checkbox"
             id="gender-checkbox"
+            type="checkbox"
             value="male"
-            onChange={this.handleGenderCheckbox}
             checked={this.state.selectedGender === "male"}
+            onChange={this.handleGenderCheckbox}
           />
           <label htmlFor="gender-checkbox">Male</label>
           <input
-            type="checkbox"
             id="gender-checkbox"
+            type="checkbox"
             value="female"
-            onChange={this.handleGenderCheckbox}
             checked={this.state.selectedGender === "female"}
+            onChange={this.handleGenderCheckbox}
           />
           <label htmlFor="gender-checkbox">Female</label>
         </div>
-        {isPending ? <p>Loading...</p> : <ul>{users.map(this.mapUsers)}</ul>}
+        {isPending ? (
+          <div className={styles["loader"]}>Loading...</div>
+        ) : (
+          <ul className={styles["users-list"]}>
+            {users.map((user) => this.mapUsers(user))}
+          </ul>
+        )}
       </div>
     );
   }
