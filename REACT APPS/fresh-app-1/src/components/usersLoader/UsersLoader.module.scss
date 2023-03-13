@@ -1,4 +1,5 @@
 .users-loader {
+  min-width: 570px;
   margin: 50px;
   padding: 25px 50px;
   width: fit-content;
@@ -12,7 +13,7 @@
 
   button {
     min-width: 100px;
-    margin: 5px;
+    margin: 15px 5px;
     padding: 10px 25px;
     border-radius: 15px;
     border: none;
@@ -25,6 +26,12 @@
   button:hover {
     background-color: rgb(117, 117, 117);
     color: rgb(250, 250, 250);
+  }
+
+  select {
+    margin: 15px 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
   }
 
   ul {
