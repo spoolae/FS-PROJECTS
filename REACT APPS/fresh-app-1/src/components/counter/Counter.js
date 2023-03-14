@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import styles from "./Counter.module.scss";
+import { startAutoClicker } from "../../utils/Counter.utils";
 
 class Counter extends Component {
   static propTypes = {
@@ -49,29 +50,12 @@ class Counter extends Component {
       }
       this.setState({ autoClicker: null, timeLeft: null });
     } else {
-      const autoClicker = setInterval(() => {
-        this.handleAddClick();
-      }, interval);
-      const endTime = Date.now() + duration;
-      const timeLeftTimer = setInterval(() => {
-        const timeLeft = Math.max(0, endTime - Date.now());
-        this.setState({ timeLeft });
-      }, 100);
-      setTimeout(() => {
-        clearInterval(autoClicker);
-        clearInterval(timeLeftTimer);
-        this.setState({
-          autoClicker: null,
-          timeLeft: null,
-          timeLeftTimerRunning: false,
-        });
-      }, duration);
-      this.setState({
-        autoClicker,
-        timeLeft: duration,
-        timeLeftTimerId: timeLeftTimer,
-        timeLeftTimerRunning: true,
-      });
+      startAutoClicker(
+        interval,
+        duration,
+        this.handleAddClick,
+        this.setState.bind(this)
+      );
     }
   };
 

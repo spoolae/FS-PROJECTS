@@ -1,6 +1,9 @@
 import React from "react";
 
 import styles from "./StopWatch.module.scss";
+import TimeDisplay from "./TimeDisplay";
+import ControlButtons from "./ControlButtons";
+import { INTERVAL_MS } from "../../constants/StopWatch.constants";
 
 class StopWatch extends React.Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class StopWatch extends React.Component {
           time: prevState.time + 1,
         }));
       }
-    }, 1000);
+    }, INTERVAL_MS);
   }
 
   componentWillUnmount() {
@@ -49,29 +52,17 @@ class StopWatch extends React.Component {
     });
   };
 
-  formatTime = (time) => {
-    const hours = Math.floor(time / 3600);
-    const minutes = Math.floor((time % 3600) / 60);
-    const seconds = time % 60;
-
-    const paddedHours = hours.toString().padStart(2, "0");
-    const paddedMinutes = minutes.toString().padStart(2, "0");
-    const paddedSeconds = seconds.toString().padStart(2, "0");
-
-    return `${paddedHours}:${paddedMinutes}:${paddedSeconds}`;
-  };
-
   render() {
     return (
       <div className={`${styles["stop-watch"]} container`}>
         <h1>StopWatch</h1>
-        <p>Time: {this.formatTime(this.state.time)}</p>
-        {this.state.isRunning ? (
-          <button onClick={this.handleStop}>Stop</button>
-        ) : (
-          <button onClick={this.handleStart}>Start</button>
-        )}
-        <button onClick={this.handleReset}>Reset</button>
+        <TimeDisplay time={this.state.time} />
+        <ControlButtons
+          isRunning={this.state.isRunning}
+          onStart={this.handleStart}
+          onStop={this.handleStop}
+          onReset={this.handleReset}
+        />
       </div>
     );
   }
