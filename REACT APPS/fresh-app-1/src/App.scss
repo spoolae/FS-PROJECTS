@@ -1,0 +1,78 @@
+$primary-color: rgb(197, 197, 197);
+$secondary-color: rgb(117, 117, 117);
+$background-color: rgb(226, 226, 226);
+$text-color: rgb(63, 63, 63);
+$font-size: 16px;
+
+@mixin button-style {
+  margin: 15px 5px;
+  padding: 10px 25px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  background-color: $primary-color;
+  color: $text-color;
+  font-size: $font-size;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: white;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  margin: 50px;
+  padding: 25px 50px;
+  width: fit-content;
+  background-color: $background-color;
+  border-radius: 25px;
+  text-align: center;
+}
+
+button {
+  @include button-style;
+}
+
+input {
+  padding: 5px;
+  margin: 10px 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+select {
+  margin: 15px 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+ul {
+  text-align: left;
+  list-style-type: none;
+  margin: 25px 0;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  color: rgb(96, 96, 96);
+  cursor: pointer;
+
+  strong {
+    font-weight: 600;
+
+    &:hover {
+      color: black;
+    }
+  }
+}

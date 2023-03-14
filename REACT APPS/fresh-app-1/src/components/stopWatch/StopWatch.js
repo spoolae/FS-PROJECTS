@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./StopWatchStyles.module.scss";
+import styles from "./StopWatch.module.scss";
 
 class StopWatch extends React.Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class StopWatch extends React.Component {
 
   render() {
     return (
-      <div className={styles["stop-watch"]}>
+      <div className={`${styles["stop-watch"]} container`}>
         <h1>StopWatch</h1>
         <p>Time: {this.formatTime(this.state.time)}</p>
         {this.state.isRunning ? (

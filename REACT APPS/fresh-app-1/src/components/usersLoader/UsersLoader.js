@@ -50,7 +50,7 @@ class UsersLoader extends Component {
   mapUsers = (user) => (
     <li key={user.login.uuid}>
       {user.name.first} {user.name.last} ({user.gender}) {user.nat}:{" "}
-      <span>{user.email}</span>
+      <strong>{user.email}</strong>
     </li>
   );
 
@@ -100,11 +100,11 @@ class UsersLoader extends Component {
     ];
 
     return (
-      <div className={styles["users-loader"]}>
+      <div className={`${styles["users-loader"]} container`}>
         <h2>Users List</h2>
         <div>
           <button onClick={this.handlePrevBtn}>&lt; Prev</button>
-          <strong> {currentPage} </strong>
+          <span> {currentPage} </span>
           <button onClick={this.handleNextBtn}> Next &gt;</button>
         </div>
         <div>

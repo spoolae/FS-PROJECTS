@@ -88,9 +88,9 @@ class Counter extends Component {
   render() {
     const { count, step, mode } = this.state;
     const buttonText = mode === "add" ? `Add ${step}` : `Subtract ${step}`;
-    const buttonClass = mode === "add" ? "addButton" : "subtractButton";
+    const buttonClass = mode === "add" ? "add-button" : "subtract-button";
     return (
-      <div className={styles.counter}>
+      <div className={`${styles["counter"]} container`}>
         <h1>Current count: {count}</h1>
         <h3>Step size: {step}</h3>
         <h3>

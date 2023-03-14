@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import Counter from "./components/counter/Counter";
 import StopWatch from "./components/stopWatch/StopWatch";
 import UsersLoader from "./components/usersLoader/UsersLoader";
@@ -6,8 +6,8 @@ import UsersLoader from "./components/usersLoader/UsersLoader";
 const App = () => {
   return (
     <div>
-      {/* <StopWatch />
-      <Counter initStep={10} /> */}
+      <StopWatch />
+      <Counter initStep={10} />
       <UsersLoader />
     </div>
   );
