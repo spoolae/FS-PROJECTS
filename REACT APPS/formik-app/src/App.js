@@ -1,5 +1,6 @@
 import "./App.scss";
+import LoginScreen from "./screens/LoginScreen";
 
-const App = () => <div>123</div>;
+const App = () => <LoginScreen />;
 
 export default App;
