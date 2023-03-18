@@ -7,7 +7,7 @@ const LoginForm = ({ isSubmitting }) => {
   return (
     <Form>
       <div className="field-container">
-        <Field name="email" placeholder="Email" validateOnChange={false} />
+        <Field type="text" name="email" placeholder="Email" />
         <ErrorMessage name="email" component="div" className="error-msg" />
       </div>
       <div className="field-container">

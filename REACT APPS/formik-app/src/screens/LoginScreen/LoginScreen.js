@@ -17,8 +17,13 @@ const LoginScreen = () => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email("Invalid email address").required("Required"),
-    password: Yup.string().required("Required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Too short (6 chars minimum)")
+      .max(20, "Too long (20 chars maximum)")
+      .required("Password is required"),
   });
 
   return (

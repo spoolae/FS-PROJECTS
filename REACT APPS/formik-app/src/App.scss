@@ -29,13 +29,17 @@ a {
   color: white;
 }
 
+img {
+  user-select: none;
+}
+
 input,
 button {
   width: 400px;
   height: 55px;
   padding: 15px;
   border-radius: 5px;
-  margin: 10px 0;
+  margin: 10px;
   outline: none;
   border: none;
 }
@@ -85,11 +89,10 @@ button:disabled {
   position: relative;
 }
 
-.error-msg {
+.error-msg,
+.error-msg-left {
   position: absolute;
-  right: -15px;
   bottom: 0;
-  transform: translateX(100%) translateY(-45%);
   padding: 10px;
   border-radius: 10px;
   background-color: #f44336;
@@ -101,12 +104,30 @@ button:disabled {
     top: 0;
     bottom: 0;
     margin: auto;
-    left: -5px;
     scale: 1.5;
     width: 0;
     height: 0;
     border-top: 0.5rem solid transparent;
-    border-right: 0.5rem solid #f44336;
     border-bottom: 0.5rem solid transparent;
+  }
+}
+
+.error-msg {
+  right: -5px;
+  transform: translateX(100%) translateY(-45%);
+
+  &::before {
+    left: -5px;
+    border-right: 0.5rem solid #f44336;
+  }
+}
+
+.error-msg-left {
+  left: -5px;
+  transform: translateX(-100%) translateY(-45%);
+
+  &::before {
+    right: -5px;
+    border-left: 0.5rem solid #f44336;
   }
 }
