@@ -2,6 +2,7 @@ import React from "react";
 import { Field, Form, ErrorMessage } from "formik";
 
 import style from "./LoginForm.module.scss";
+import { Link } from "react-router-dom";
 
 const LoginForm = ({ isSubmitting }) => {
   return (
@@ -19,7 +20,7 @@ const LoginForm = ({ isSubmitting }) => {
           <Field type="checkbox" name="rememberMe" id="remember-me" />
           Remember me
         </label>
-        <a href="/forgot-password">Forgot password</a>
+        <Link to="/forgot-password">Forgot password</Link>
       </div>
       <button type="submit" disabled={isSubmitting}>
         Login

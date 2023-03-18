@@ -1,8 +1,20 @@
 .header-component {
-  margin: 50px;
+  padding: 50px 150px;
+  width: 100vw;
+  height: 150px;
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   img {
     cursor: pointer;
+  }
+
+  button {
+    width: 125px;
+    border: 2px solid white;
+    background-color: transparent;
+    text-transform: none;
   }
 }

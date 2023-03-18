@@ -9,7 +9,7 @@ const RegisterForm = ({ isSubmitting }) => {
     <Form className={style["register-form"]}>
       <RegisterFormFields />
       <button type="submit" disabled={isSubmitting}>
-        Register
+        Create Account
       </button>
     </Form>
   );

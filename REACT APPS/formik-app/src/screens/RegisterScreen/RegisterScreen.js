@@ -2,9 +2,9 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import styles from "./RegisterScreen.module.scss";
 import RegisterForm from "../../components/registerForm/RegisterForm";
 import Header from "../../components/header/Header";
+import { Link } from "react-router-dom";
 
 const RegisterScreen = () => {
   const initialValues = {
@@ -55,8 +55,12 @@ const RegisterScreen = () => {
   });
 
   return (
-    <div className={styles["register-screen"]}>
-      <Header />
+    <div>
+      <Header>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+      </Header>
       <div className="form-container">
         <h2>Create an account</h2>
         <Formik

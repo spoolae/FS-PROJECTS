@@ -2,9 +2,9 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import styles from "./LoginScreen.module.scss";
 import LoginForm from "../../components/loginForm/LoginForm";
 import Header from "../../components/header/Header";
+import { Link } from "react-router-dom";
 
 const LoginScreen = () => {
   const initialValues = { email: "", password: "" };
@@ -27,8 +27,12 @@ const LoginScreen = () => {
   });
 
   return (
-    <div className={styles["login-screen"]}>
-      <Header />
+    <div>
+      <Header>
+        <Link to="/register">
+          <button>Register</button>
+        </Link>
+      </Header>
       <div className="form-container">
         <h2>Login to your account</h2>
         <Formik
