@@ -2,7 +2,9 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import LoginForm from "../components/LoginForm";
+import styles from "./LoginScreen.module.scss";
+import LoginForm from "../../components/loginForm/LoginForm";
+import Header from "../../components/header/Header";
 
 const LoginScreen = () => {
   const initialValues = { email: "", password: "" };
@@ -20,15 +22,18 @@ const LoginScreen = () => {
   });
 
   return (
-    <div className="login-screen">
-      <h2>Login</h2>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleFormSubmit}
-      >
-        {({ isSubmitting }) => <LoginForm isSubmitting={isSubmitting} />}
-      </Formik>
+    <div className={styles["login-screen"]}>
+      <Header />
+      <div className="form-container">
+        <h2>Login to your account</h2>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleFormSubmit}
+        >
+          {({ isSubmitting }) => <LoginForm isSubmitting={isSubmitting} />}
+        </Formik>
+      </div>
     </div>
   );
 };

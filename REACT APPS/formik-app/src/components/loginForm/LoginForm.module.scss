@@ -1,0 +1,13 @@
+.remember-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  label {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+  }
+}
