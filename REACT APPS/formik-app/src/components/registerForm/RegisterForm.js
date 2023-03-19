@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Field } from "formik";
-import * as Yup from "yup";
 
 import style from "./RegisterForm.module.scss";
 import RegisterFormFields from "./RegisterFormFields";

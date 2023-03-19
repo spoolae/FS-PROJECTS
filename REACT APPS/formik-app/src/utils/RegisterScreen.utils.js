@@ -7,6 +7,7 @@ export const initialValues = {
   email: "",
   password: "",
   confirmPassword: "",
+  userType: "",
 };
 
 export const validationSchema = Yup.object({
@@ -37,5 +38,8 @@ export const validationSchema = Yup.object({
     .required("Required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Required"),
+  userType: Yup.string()
+    .oneOf(["buyer", "seller"], "Please select a user type")
     .required("Required"),
 });
