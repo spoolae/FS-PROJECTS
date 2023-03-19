@@ -9,10 +9,6 @@ import { initialValues, validationSchema } from "../../utils/LoginScreen.utils";
 const LoginScreen = () => {
   const navigate = useNavigate();
 
-  const propsToPass = {
-    userEmail: "janedoe@example.com",
-  };
-
   const handleFormSubmit = (email) => {
     setTimeout(() => {
       navigate("/home", { state: { userEmail: email } });

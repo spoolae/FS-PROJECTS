@@ -12,13 +12,9 @@ import {
 const RegisterScreen = () => {
   const navigate = useNavigate();
 
-  const propsToPass = {
-    userEmail: "janedoe@example.com",
-  };
-
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (email) => {
     setTimeout(() => {
-      navigate("/home", { state: propsToPass });
+      navigate("/home", { state: { userEmail: email } });
     }, 800);
   };
 
@@ -34,7 +30,9 @@ const RegisterScreen = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleFormSubmit}
+          onSubmit={(values) => {
+            handleFormSubmit(values.email);
+          }}
         >
           <RegisterForm />
         </Formik>
