@@ -4,13 +4,11 @@ import { Form } from "formik";
 import style from "./RegisterForm.module.scss";
 import RegisterFormFields from "./RegisterFormFields";
 
-const RegisterForm = ({ isSubmitting }) => {
+const RegisterForm = ({ errors, touched }) => {
   return (
     <Form className={style["register-form"]}>
-      <RegisterFormFields />
-      <button type="submit" disabled={isSubmitting}>
-        Create Account
-      </button>
+      <RegisterFormFields errors={errors} touched={touched} />
+      <button type="submit">Create Account</button>
     </Form>
   );
 };

@@ -34,7 +34,9 @@ const RegisterScreen = () => {
             handleFormSubmit(values.email);
           }}
         >
-          <RegisterForm />
+          {({ errors, touched }) => (
+            <RegisterForm errors={errors} touched={touched} />
+          )}
         </Formik>
       </div>
     </div>

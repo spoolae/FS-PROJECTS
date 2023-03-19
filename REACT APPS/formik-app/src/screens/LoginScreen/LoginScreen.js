@@ -31,7 +31,9 @@ const LoginScreen = () => {
             handleFormSubmit(values.email);
           }}
         >
-          <LoginForm />
+          {({ errors, touched }) => (
+            <LoginForm errors={errors} touched={touched} />
+          )}
         </Formik>
       </div>
     </div>
