@@ -26,7 +26,11 @@ const RegisterScreen = () => {
         </Link>
       </Header>
       <div className="form-container">
-        <h2>Create an account</h2>
+        <div>
+          <h2>Create an account</h2>
+          <p>We always keep your name and email address private</p>
+          <br />
+        </div>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
