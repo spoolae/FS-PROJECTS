@@ -17,4 +17,16 @@
     background-color: transparent;
     text-transform: none;
   }
+
+  p {
+    font-size: 24px;
+    color: rgba(231, 231, 231, 0.85);
+
+    span {
+      color: white;
+      font-style: normal;
+      font-style: italic;
+      opacity: 1;
+    }
+  }
 }

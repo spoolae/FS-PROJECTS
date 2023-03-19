@@ -1,58 +1,26 @@
 import React from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
 
 import RegisterForm from "../../components/registerForm/RegisterForm";
 import Header from "../../components/header/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  initialValues,
+  validationSchema,
+} from "../../utils/RegisterScreen.utils";
 
 const RegisterScreen = () => {
-  const initialValues = {
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+  const navigate = useNavigate();
+
+  const propsToPass = {
+    userEmail: "janedoe@example.com",
   };
 
-  const handleFormSubmit = (values, { setSubmitting }) => {
+  const handleFormSubmit = () => {
     setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+      navigate("/home", { state: propsToPass });
+    }, 800);
   };
-
-  const validationSchema = Yup.object({
-    firstName: Yup.string()
-      .min(3, "Too Short")
-      .max(20, "Too Long")
-      .required("Required"),
-    lastName: Yup.string()
-      .min(3, "Too Short")
-      .max(20, "Too Long")
-      .required("Required"),
-    username: Yup.string()
-      .min(3, "Too Short")
-      .max(20, "Too Long")
-      .matches(
-        /^[a-zA-Z0-9_-]*$/,
-        "Username can only contain letters, numbers, underscores, and dashes"
-      )
-      .required("Required"),
-    email: Yup.string().email("Invalid email address").required("Required"),
-    password: Yup.string()
-      .min(6, "Too short (6 chars minimum)")
-      .max(20, "Too long (20 chars maximum)")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-        "Password must contain at least one uppercase letter, one lowercase letter, and one number"
-      )
-      .required("Required"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match")
-      .required("Required"),
-  });
 
   return (
     <div>
@@ -68,7 +36,7 @@ const RegisterScreen = () => {
           validationSchema={validationSchema}
           onSubmit={handleFormSubmit}
         >
-          {({ isSubmitting }) => <RegisterForm isSubmitting={isSubmitting} />}
+          <RegisterForm />
         </Formik>
       </div>
     </div>

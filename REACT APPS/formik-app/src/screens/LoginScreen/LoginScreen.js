@@ -1,30 +1,23 @@
 import React from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
 
 import LoginForm from "../../components/loginForm/LoginForm";
 import Header from "../../components/header/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { initialValues, validationSchema } from "../../utils/LoginScreen.utils";
 
 const LoginScreen = () => {
-  const initialValues = { email: "", password: "" };
+  const navigate = useNavigate();
 
-  const handleFormSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+  const propsToPass = {
+    userEmail: "janedoe@example.com",
   };
 
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    password: Yup.string()
-      .min(6, "Too short (6 chars minimum)")
-      .max(20, "Too long (20 chars maximum)")
-      .required("Password is required"),
-  });
+  const handleFormSubmit = (email) => {
+    setTimeout(() => {
+      navigate("/home", { state: { userEmail: email } });
+    }, 800);
+  };
 
   return (
     <div>
@@ -38,9 +31,11 @@ const LoginScreen = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleFormSubmit}
+          onSubmit={(values) => {
+            handleFormSubmit(values.email);
+          }}
         >
-          {({ isSubmitting }) => <LoginForm isSubmitting={isSubmitting} />}
+          <LoginForm />
         </Formik>
       </div>
     </div>
