@@ -47,52 +47,76 @@ class Counter extends Component {
     const buttonText = mode === "add" ? `Add ${step}` : `Subtract ${step}`;
     const buttonClass = mode === "add" ? "add-button" : "subtract-button";
 
+    const DisplayInfo = () => {
+      return (
+        <div>
+          <h1>Current count: {count}</h1>
+          <h3>Step size: {step}</h3>
+          <h3>
+            {this.state.timeLeft
+              ? `Time left: ${(this.state.timeLeft / 1000).toFixed(1)} seconds`
+              : `Autoclicker is inactive`}
+          </h3>
+        </div>
+      );
+    };
+
+    const CounterControl = () => {
+      return (
+        <div>
+          <div>
+            <label htmlFor="stepInput">Step:</label>
+            <input
+              type="number"
+              id="stepInput"
+              value={step}
+              onChange={this.handleStepChange}
+            />
+          </div>
+          <button
+            className={`${styles.button} ${styles[buttonClass]}`}
+            onClick={this.handleAddClick}
+          >
+            {buttonText}
+          </button>
+          <button onClick={this.handleModeChange}>Change mode</button>
+        </div>
+      );
+    };
+
+    const AutoClicker = () => {
+      return (
+        <div>
+          <div>
+            <label htmlFor="intervalInput">Interval (ms):</label>
+            <input
+              type="number"
+              id="intervalInput"
+              value={this.state.interval}
+              onChange={this.handleIntervalChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="durationInput">Duration (ms):</label>
+            <input
+              type="number"
+              id="durationInput"
+              value={this.state.duration}
+              onChange={this.handleDurationChange}
+            />
+          </div>
+          <button onClick={this.handleStartAutoClicker}>
+            {this.state.autoClicker ? "Stop" : "Start"} Autoclicker
+          </button>
+        </div>
+      );
+    };
+
     return (
       <div className={`${styles["counter"]} container`}>
-        <h1>Current count: {count}</h1>
-        <h3>Step size: {step}</h3>
-        <h3>
-          {this.state.timeLeft
-            ? `Time left: ${(this.state.timeLeft / 1000).toFixed(1)} seconds`
-            : `Autoclicker is inactive`}
-        </h3>
-        <div>
-          <label htmlFor="stepInput">Step:</label>
-          <input
-            type="number"
-            id="stepInput"
-            value={step}
-            onChange={this.handleStepChange}
-          />
-        </div>
-        <button
-          className={`${styles.button} ${styles[buttonClass]}`}
-          onClick={this.handleAddClick}
-        >
-          {buttonText}
-        </button>
-        <button onClick={this.handleModeChange}>Change mode</button>
-        <div>
-          <label htmlFor="intervalInput">Interval (ms):</label>
-          <input
-            type="number"
-            id="intervalInput"
-            value={this.state.interval}
-            onChange={this.handleIntervalChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="durationInput">Duration (ms):</label>
-          <input
-            type="number"
-            id="durationInput"
-            value={this.state.duration}
-            onChange={this.handleDurationChange}
-          />
-        </div>
-        <button onClick={this.handleStartAutoClicker}>
-          {this.state.autoClicker ? "Stop" : "Start"} Autoclicker
-        </button>
+        <DisplayInfo />
+        <CounterControl />
+        <AutoClicker />
       </div>
     );
   }
