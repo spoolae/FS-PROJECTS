@@ -15,6 +15,9 @@ import {
   handleDurationChange,
   handleStartAutoClicker,
 } from "../../utils/Counter.utils";
+import DisplayInfo from "./DisplayInfo";
+import CounterControl from "./CounterControl";
+import AutoClickerControl from "./AutoClickerControl";
 
 class Counter extends Component {
   static propTypes = {
@@ -43,80 +46,29 @@ class Counter extends Component {
   }
 
   render() {
-    const { count, step, mode } = this.state;
+    const { count, step, mode, timeLeft } = this.state;
     const buttonText = mode === "add" ? `Add ${step}` : `Subtract ${step}`;
     const buttonClass = mode === "add" ? "add-button" : "subtract-button";
 
-    const DisplayInfo = () => {
-      return (
-        <div>
-          <h1>Current count: {count}</h1>
-          <h3>Step size: {step}</h3>
-          <h3>
-            {this.state.timeLeft
-              ? `Time left: ${(this.state.timeLeft / 1000).toFixed(1)} seconds`
-              : `Autoclicker is inactive`}
-          </h3>
-        </div>
-      );
-    };
-
-    const CounterControl = () => {
-      return (
-        <div>
-          <div>
-            <label htmlFor="stepInput">Step:</label>
-            <input
-              type="number"
-              id="stepInput"
-              value={step}
-              onChange={this.handleStepChange}
-            />
-          </div>
-          <button
-            className={`${styles.button} ${styles[buttonClass]}`}
-            onClick={this.handleAddClick}
-          >
-            {buttonText}
-          </button>
-          <button onClick={this.handleModeChange}>Change mode</button>
-        </div>
-      );
-    };
-
-    const AutoClicker = () => {
-      return (
-        <div>
-          <div>
-            <label htmlFor="intervalInput">Interval (ms):</label>
-            <input
-              type="number"
-              id="intervalInput"
-              value={this.state.interval}
-              onChange={this.handleIntervalChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="durationInput">Duration (ms):</label>
-            <input
-              type="number"
-              id="durationInput"
-              value={this.state.duration}
-              onChange={this.handleDurationChange}
-            />
-          </div>
-          <button onClick={this.handleStartAutoClicker}>
-            {this.state.autoClicker ? "Stop" : "Start"} Autoclicker
-          </button>
-        </div>
-      );
-    };
-
     return (
       <div className={`${styles["counter"]} container`}>
-        <DisplayInfo />
-        <CounterControl />
-        <AutoClicker />
+        <DisplayInfo count={count} step={step} timeLeft={timeLeft} />
+        <CounterControl
+          step={step}
+          buttonText={buttonText}
+          buttonClass={buttonClass}
+          handleStepChange={this.handleStepChange}
+          handleAddClick={this.handleAddClick}
+          handleModeChange={this.handleModeChange}
+        />
+        <AutoClickerControl
+          interval={this.state.interval}
+          duration={this.state.duration}
+          autoClicker={this.state.autoClicker}
+          handleIntervalChange={this.handleIntervalChange}
+          handleDurationChange={this.handleDurationChange}
+          handleStartAutoClicker={this.handleStartAutoClicker}
+        />
       </div>
     );
   }
