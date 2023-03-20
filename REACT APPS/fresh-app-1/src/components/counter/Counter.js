@@ -2,7 +2,19 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import styles from "./Counter.module.scss";
-import { startAutoClicker } from "../../utils/Counter.utils";
+import {
+  DEFAULT_DURATION,
+  DEFAULT_INTERVAL,
+  DEFAULT_STEP,
+} from "../../constants/Counter.constants";
+import {
+  handleAddClick,
+  handleStepChange,
+  handleModeChange,
+  handleIntervalChange,
+  handleDurationChange,
+  handleStartAutoClicker,
+} from "../../utils/Counter.utils";
 
 class Counter extends Component {
   static propTypes = {
@@ -15,64 +27,26 @@ class Counter extends Component {
     super(props);
     this.state = {
       count: 0,
-      step: props.initStep || 1,
+      step: props.initStep || DEFAULT_STEP,
       mode: "add",
       autoClicker: null,
-      interval: props.interval || 1000,
-      duration: props.duration || 5000,
+      interval: props.interval || DEFAULT_INTERVAL,
+      duration: props.duration || DEFAULT_DURATION,
       timeLeft: null,
     };
+    this.handleAddClick = handleAddClick.bind(this);
+    this.handleStepChange = handleStepChange.bind(this);
+    this.handleModeChange = handleModeChange.bind(this);
+    this.handleIntervalChange = handleIntervalChange.bind(this);
+    this.handleDurationChange = handleDurationChange.bind(this);
+    this.handleStartAutoClicker = handleStartAutoClicker.bind(this);
   }
-
-  handleAddClick = () => {
-    const { count, step, mode } = this.state;
-    const newValue = mode === "add" ? count + step : count - step;
-    this.setState({ count: newValue });
-  };
-
-  handleStepChange = (event) => {
-    const newStep = parseInt(event.target.value, 10);
-    this.setState({ step: newStep });
-  };
-
-  handleModeChange = () => {
-    const { mode } = this.state;
-    const newMode = mode === "add" ? "subtract" : "add";
-    this.setState({ mode: newMode });
-  };
-
-  handleStartAutoClicker = () => {
-    const { interval, duration } = this.state;
-    if (this.state.autoClicker) {
-      clearInterval(this.state.autoClicker);
-      if (this.state.timeLeftTimerRunning) {
-        clearInterval(this.state.timeLeftTimerId);
-      }
-      this.setState({ autoClicker: null, timeLeft: null });
-    } else {
-      startAutoClicker(
-        interval,
-        duration,
-        this.handleAddClick,
-        this.setState.bind(this)
-      );
-    }
-  };
-
-  handleIntervalChange = (event) => {
-    const newInterval = parseInt(event.target.value, 10);
-    this.setState({ interval: newInterval });
-  };
-
-  handleDurationChange = (event) => {
-    const newDuration = parseInt(event.target.value, 10);
-    this.setState({ duration: newDuration });
-  };
 
   render() {
     const { count, step, mode } = this.state;
     const buttonText = mode === "add" ? `Add ${step}` : `Subtract ${step}`;
     const buttonClass = mode === "add" ? "add-button" : "subtract-button";
+
     return (
       <div className={`${styles["counter"]} container`}>
         <h1>Current count: {count}</h1>
