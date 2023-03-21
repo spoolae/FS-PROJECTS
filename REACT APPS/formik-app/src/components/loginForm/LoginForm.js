@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Field, Form, ErrorMessage } from "formik";
 import classNames from "classnames";
 
 import style from "./LoginForm.module.scss";
+import { LocalizationContext } from "../../contexts/LocalizationContext";
+import { loginTranslations } from "../../constants/translations";
 
 const LoginForm = ({ errors, touched }) => {
+  const { locale } = useContext(LocalizationContext);
+
+  const { rememberMe, forgotPassword, login } = loginTranslations[locale];
+
   const emailFieldClassNames = classNames({
     "invalid-input": !!errors.email && touched.email,
   });
@@ -36,11 +42,11 @@ const LoginForm = ({ errors, touched }) => {
       <div className={style["remember-container"]}>
         <label htmlFor="remember-me">
           <Field type="checkbox" name="rememberMe" id="remember-me" />
-          Remember me
+          {rememberMe}
         </label>
-        <Link to="/forgot-password">Forgot password</Link>
+        <Link to="/forgot-password">{forgotPassword}</Link>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">{login}</button>
     </Form>
   );
 };

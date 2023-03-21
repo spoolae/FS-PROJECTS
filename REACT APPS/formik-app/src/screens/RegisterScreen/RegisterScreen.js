@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Formik } from "formik";
 
 import RegisterForm from "../../components/registerForm/RegisterForm";
@@ -8,9 +8,15 @@ import {
   initialValues,
   validationSchema,
 } from "../../utils/RegisterScreen.utils";
+import { LocalizationContext } from "../../contexts/LocalizationContext";
+import { registerTranslations } from "../../constants/translations";
 
 const RegisterScreen = () => {
   const navigate = useNavigate();
+
+  const { locale } = useContext(LocalizationContext);
+
+  const { h2, p } = registerTranslations[locale];
 
   const handleFormSubmit = (email) => {
     setTimeout(() => {
@@ -27,8 +33,8 @@ const RegisterScreen = () => {
       </Header>
       <div className="form-container">
         <div>
-          <h2>Create an account</h2>
-          <p>We always keep your name and email address private</p>
+          <h2>{h2}</h2>
+          <p>{p}</p>
           <br />
         </div>
         <Formik

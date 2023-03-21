@@ -1,34 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Form, Field } from "formik";
 
 import style from "./RegisterForm.module.scss";
 import RegisterFormFields from "./RegisterFormFields";
+import { LocalizationContext } from "../../contexts/LocalizationContext";
+import { registerTranslations } from "../../constants/translations";
 
 const RegisterForm = ({ errors, touched }) => {
+  const { locale } = useContext(LocalizationContext);
+
+  const { buyerTitle, buyerSubtitle, sellerTitle, sellerSubtitle, button } =
+    registerTranslations[locale];
+
   return (
     <Form className={style["register-form"]}>
       <RegisterFormFields errors={errors} touched={touched} />
       <div className={style["radio-container"]}>
         <label>
           <Field type="radio" name="userType" value="buyer" required />
-          Join As a Buyer
+          {buyerTitle}
         </label>
-        <p>
-          I am looking for a Name, Logo or Tagline for my business, brand or
-          product
-        </p>
+        <p>{buyerSubtitle}</p>
       </div>
       <div className={style["radio-container"]}>
         <label>
           <Field type="radio" name="userType" value="seller" required />
-          Join As a Marketplace Seller
+          {sellerTitle}
         </label>
-        <p>
-          I am looking for a Name, Logo or Tagline for my business, brand or
-          product
-        </p>
+        <p>{sellerSubtitle}</p>
       </div>
-      <button type="submit">Create Account</button>
+      <button type="submit">{button}</button>
     </Form>
   );
 };

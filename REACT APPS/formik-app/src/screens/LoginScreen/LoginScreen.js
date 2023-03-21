@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Formik } from "formik";
 
 import LoginForm from "../../components/loginForm/LoginForm";
 import Header from "../../components/header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { initialValues, validationSchema } from "../../utils/LoginScreen.utils";
+import { LocalizationContext } from "../../contexts/LocalizationContext";
+import { loginTranslations } from "../../constants/translations";
 
 const LoginScreen = () => {
   const navigate = useNavigate();
+
+  const { locale } = useContext(LocalizationContext);
+
+  const { h2 } = loginTranslations[locale];
 
   const handleFormSubmit = (email) => {
     setTimeout(() => {
@@ -23,7 +29,7 @@ const LoginScreen = () => {
         </Link>
       </Header>
       <div className="form-container">
-        <h2>Login to your account</h2>
+        <h2>{h2}</h2>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
