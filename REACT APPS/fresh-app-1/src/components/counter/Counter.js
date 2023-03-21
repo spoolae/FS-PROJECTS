@@ -60,7 +60,7 @@ class Counter extends Component {
     const { count, step, mode, timeLeft } = this.state;
     const buttonText = mode === "add" ? `Add ${step}` : `Subtract ${step}`;
     const buttonClass = mode === "add" ? "add-button" : "subtract-button";
-    console.log("render");
+
     return (
       <div className={`${styles["counter"]} container`}>
         <DisplayInfo count={count} step={step} timeLeft={timeLeft} />
