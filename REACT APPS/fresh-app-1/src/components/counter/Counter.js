@@ -45,11 +45,22 @@ class Counter extends Component {
     this.handleStartAutoClicker = handleStartAutoClicker.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.count !== nextState.count ||
+      this.state.step !== nextState.step ||
+      this.state.mode !== nextState.mode ||
+      this.state.interval !== nextState.interval ||
+      this.state.duration !== nextState.duration ||
+      this.state.autoClicker !== nextState.autoClicker
+    );
+  }
+
   render() {
     const { count, step, mode, timeLeft } = this.state;
     const buttonText = mode === "add" ? `Add ${step}` : `Subtract ${step}`;
     const buttonClass = mode === "add" ? "add-button" : "subtract-button";
-
+    console.log("render");
     return (
       <div className={`${styles["counter"]} container`}>
         <DisplayInfo count={count} step={step} timeLeft={timeLeft} />
