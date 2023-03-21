@@ -22,6 +22,17 @@
     }
   }
 
+  .lang-button {
+    border: none;
+    text-decoration: underline;
+  }
+
+  > div {
+    * {
+      display: inline-block;
+    }
+  }
+
   p {
     font-size: 24px;
     color: rgba(255, 255, 255, 0.85);

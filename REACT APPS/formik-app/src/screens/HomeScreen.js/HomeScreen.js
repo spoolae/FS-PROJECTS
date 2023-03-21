@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
 
 import Header from "../../components/header/Header";
+import { homeTranslations } from "../../constants/translations";
+import { LocalizationContext } from "../../contexts/LocalizationContext";
 
 const HomeScreen = () => {
   const location = useLocation();
-  const { userEmail } = location.state;
+  const { userEmail } = location.state || "";
+
+  const { locale } = useContext(LocalizationContext);
+
+  const { h1, greeting } = homeTranslations[locale];
 
   const Greeting = () => (
     <p>
-      Hello, <span>{userEmail}</span>
+      {greeting} <span>{userEmail}</span>
     </p>
   );
 
@@ -17,7 +23,7 @@ const HomeScreen = () => {
     <div>
       <Header>{userEmail ? <Greeting /> : null}</Header>
       <div className="form-container">
-        <h1>This is home screen</h1>
+        <h1>{h1}</h1>
       </div>
     </div>
   );

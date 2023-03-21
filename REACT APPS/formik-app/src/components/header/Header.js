@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { LocalizationContext } from "../../contexts/LocalizationContext";
 import logo from "../../images/logo.png";
-import styles from "./Header.module.scss";
+import style from "./Header.module.scss";
 
 const Header = ({ children }) => {
+  const { locale, setLocale } = useContext(LocalizationContext);
+
+  const handleClick = () => {
+    if (locale === "en") {
+      setLocale("ua");
+    } else {
+      setLocale("en");
+    }
+  };
+
   return (
-    <div className={styles["header-component"]}>
+    <div className={style["header-component"]}>
       <Link to="/login">
         <img src={logo} alt="logo" />
       </Link>
-      {children}
+      <div>
+        {children}
+        <button onClick={handleClick} className={style["lang-button"]}>
+          {locale === "en" ? "English" : "Українська"}
+        </button>
+      </div>
     </div>
   );
 };
