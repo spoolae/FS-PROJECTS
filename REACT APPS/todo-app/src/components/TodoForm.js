@@ -27,7 +27,9 @@ const TodoForm = ({ addTodo }) => {
             value={values.task}
             onChange={handleChange}
             onBlur={handleBlur}
-            className="task-input"
+            className={
+              touched.task && errors.task ? "task-input invalid" : "task-input"
+            }
           />
           <button type="submit">Add Task</button>
           <br />
