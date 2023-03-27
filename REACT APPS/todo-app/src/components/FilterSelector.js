@@ -2,7 +2,7 @@ import React from "react";
 
 const FilterSelector = ({ filter, setFilter }) => {
   return (
-    <div>
+    <div className="filter-selector-container">
       <button onClick={() => setFilter("all")} disabled={filter === "all"}>
         All
       </button>

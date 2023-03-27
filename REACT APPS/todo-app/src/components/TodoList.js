@@ -13,7 +13,7 @@ const TodoList = ({ todos, deleteTodo, toggleTodo, filter }) => {
   });
 
   return (
-    <ul>
+    <ul className="todo-list-container">
       {filteredTodos.map((todo, index) => (
         <TodoItem
           key={index}

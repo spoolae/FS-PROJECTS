@@ -17,7 +17,8 @@ function App() {
       : todos;
 
   return (
-    <div className="App">
+    <div className="app">
+      <h1>TODO LIST</h1>
       <TodoForm addTodo={addTodo} />
       <FilterSelector filter={filter} setFilter={setFilter} />
       <TodoList

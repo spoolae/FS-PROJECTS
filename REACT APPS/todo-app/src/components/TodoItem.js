@@ -28,7 +28,7 @@ const TodoItem = ({ todo, index, deleteTodo, toggleTodo }) => {
   };
 
   return (
-    <li>
+    <li className="todo-item-container">
       <input type="checkbox" checked={todo.completed} onChange={handleToggle} />
       {editing ? (
         <form onSubmit={handleSubmit}>
@@ -36,21 +36,24 @@ const TodoItem = ({ todo, index, deleteTodo, toggleTodo }) => {
             type="text"
             value={taskText}
             onChange={(event) => setTaskText(event.target.value)}
+            className="change-text"
           />
-          <button type="submit">Save</button>
-          <button type="button" onClick={handleCancel}>
-            Cancel
-          </button>
+          <div className="buttons">
+            <button type="submit">Save</button>
+            <button type="button" onClick={handleCancel}>
+              Cancel
+            </button>
+          </div>
         </form>
       ) : (
         <>
-          <span
-            style={{ textDecoration: todo.completed ? "line-through" : "none" }}
-          >
+          <span className={todo.completed ? "item-completed-text" : ""}>
             {todo.task}
           </span>
-          <button onClick={handleEdit}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+          <div className="buttons">
+            <button onClick={handleEdit}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
         </>
       )}
     </li>
