@@ -1,23 +1,24 @@
 import { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 export const useTodoList = () => {
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState("all");
 
   const addTodo = (task) => {
-    setTodos([...todos, { task, completed: false }]);
+    setTodos([...todos, { id: uuid(), task, completed: false }]);
   };
 
-  const deleteTodo = (index) => {
-    setTodos([...todos.slice(0, index), ...todos.slice(index + 1)]);
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const toggleTodo = (index) => {
-    setTodos([
-      ...todos.slice(0, index),
-      { ...todos[index], completed: !todos[index].completed },
-      ...todos.slice(index + 1),
-    ]);
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   const filteredTodos = todos.filter((todo) => {

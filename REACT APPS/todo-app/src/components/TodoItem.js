@@ -2,7 +2,7 @@ import React from "react";
 
 import { useTodoItem } from "../hooks/useTodoItem";
 
-const TodoItem = ({ todo, index, deleteTodo, toggleTodo }) => {
+const TodoItem = ({ todo, deleteTodo, toggleTodo }) => {
   const {
     editing,
     taskText,
@@ -13,16 +13,16 @@ const TodoItem = ({ todo, index, deleteTodo, toggleTodo }) => {
   } = useTodoItem(todo.task);
 
   const handleDelete = () => {
-    deleteTodo(index);
+    deleteTodo(todo.id);
   };
 
   const handleToggle = () => {
-    toggleTodo(index);
+    toggleTodo(todo.id);
   };
 
   const handleTaskTextChange = (event) => {
     const updatedTodo = { ...todo, task: event.target.value };
-    toggleTodo(index, updatedTodo);
+    toggleTodo(todo.id, updatedTodo);
   };
 
   const editingItemContent = (
