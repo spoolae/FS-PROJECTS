@@ -13,7 +13,7 @@ const TodoItem = ({ todo, index, deleteTodo, toggleTodo }) => {
   };
 
   const handleEdit = () => {
-    setTaskText(todo.task); // added line
+    setTaskText(todo.task);
     setEditing(true);
   };
 

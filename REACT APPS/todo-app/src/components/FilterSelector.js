@@ -1,23 +1,19 @@
 import React from "react";
 
+import { filterButtons } from "../constants/constants";
+
 const FilterSelector = ({ filter, setFilter }) => {
   return (
     <div className="filter-selector-container">
-      <button onClick={() => setFilter("all")} disabled={filter === "all"}>
-        All
-      </button>
-      <button
-        onClick={() => setFilter("completed")}
-        disabled={filter === "completed"}
-      >
-        Completed
-      </button>
-      <button
-        onClick={() => setFilter("active")}
-        disabled={filter === "active"}
-      >
-        Active
-      </button>
+      {filterButtons.map(({ label, value }) => (
+        <button
+          key={value}
+          onClick={() => setFilter(value)}
+          disabled={filter === value}
+        >
+          {label}
+        </button>
+      ))}
     </div>
   );
 };

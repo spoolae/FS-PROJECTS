@@ -1,46 +1,31 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+
+import useTodoForm from "../hooks/useTodoForm";
 
 const TodoForm = ({ addTodo }) => {
-  const handleSubmit = (values, { resetForm }) => {
-    addTodo(values.task);
-    resetForm();
-  };
-
-  const validationSchema = Yup.object().shape({
-    task: Yup.string().required("Task is required"),
-  });
+  const formik = useTodoForm(addTodo);
 
   return (
-    <Formik
-      initialValues={{ task: "" }}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      {({ values, handleChange, handleBlur, touched, errors }) => (
-        <Form className="todo-form-container">
-          <Field
-            type="text"
-            name="task"
-            placeholder="Write something..."
-            value={values.task}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={
-              touched.task && errors.task ? "task-input invalid" : "task-input"
-            }
-          />
-          <button type="submit">Add Task</button>
-          <br />
-          {touched.task && errors.task ? (
-            <div className="error-msg">
-              <ErrorMessage name="task" />
-            </div>
-          ) : null}
-        </Form>
-      )}
-    </Formik>
+    <form onSubmit={formik.handleSubmit} className="todo-form-container">
+      <input
+        type="text"
+        name="task"
+        placeholder="Write something..."
+        value={formik.values.task}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        className={
+          formik.touched.task && formik.errors.task
+            ? "task-input invalid"
+            : "task-input"
+        }
+      />
+      <button type="submit">Add Task</button>
+      <br />
+      {formik.touched.task && formik.errors.task ? (
+        <div className="error-msg">{formik.errors.task}</div>
+      ) : null}
+    </form>
   );
 };
 
