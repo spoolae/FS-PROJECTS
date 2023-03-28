@@ -1,17 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, deleteTodo, toggleTodo, filter }) => {
-  const filteredTodos = todos.filter((todo) => {
-    if (filter === "completed") {
-      return todo.completed;
-    } else if (filter === "active") {
-      return !todo.completed;
-    } else {
-      return true;
-    }
-  });
-
+const TodoList = ({ filteredTodos, deleteTodo, toggleTodo }) => {
   return (
     <ul className="todo-list-container">
       {filteredTodos.map((todo, index) => (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
@@ -6,15 +6,8 @@ import FilterSelector from "./components/FilterSelector";
 import { useTodoList } from "./hooks/useTodoList";
 
 function App() {
-  const [todos, addTodo, deleteTodo, toggleTodo] = useTodoList();
-  const [filter, setFilter] = useState("all");
-
-  const filteredTodos =
-    filter === "completed"
-      ? todos.filter((todo) => todo.completed)
-      : filter === "active"
-      ? todos.filter((todo) => !todo.completed)
-      : todos;
+  const [filteredTodos, addTodo, deleteTodo, toggleTodo, filter, setFilter] =
+    useTodoList();
 
   return (
     <div className="app">
@@ -22,7 +15,7 @@ function App() {
       <TodoForm addTodo={addTodo} />
       <FilterSelector filter={filter} setFilter={setFilter} />
       <TodoList
-        todos={filteredTodos}
+        filteredTodos={filteredTodos}
         deleteTodo={deleteTodo}
         toggleTodo={toggleTodo}
       />
