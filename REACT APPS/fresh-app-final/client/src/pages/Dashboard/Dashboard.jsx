@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import CONSTANTS from '../../constants';
 import CustomerDashboard from '../../components/CustomerDashboard/CustomerDashboard';
 import CreatorDashboard from '../../components/CreatorDashboard/CreatorDashboard';
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header';
 
-const Dashboard = props => {
+const Dashboard = (props) => {
   const { role, history } = props;
   return (
     <div>
@@ -19,6 +19,6 @@ const Dashboard = props => {
   );
 };
 
-const mapStateToProps = state => state.userStore.data;
+const mapStateToProps = (state) => state.userStore.data;
 
 export default connect(mapStateToProps)(Dashboard);
