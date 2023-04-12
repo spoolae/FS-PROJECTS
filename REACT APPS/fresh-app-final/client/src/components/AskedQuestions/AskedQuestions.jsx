@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './AskedQuestions.module.scss';
-import { FaPlus, FaTimes } from 'react-icons/fa'; // Import plus and cross icons
+import { FaPlus, FaTimes } from 'react-icons/fa';
 
 const askedQuestions = [
   {
@@ -34,24 +34,35 @@ const AskedQuestions = () => {
     setShowAnswer({ ...showAnswer, [index]: !showAnswer[index] });
   };
 
+  const renderQuestion = (q, i) => {
+    return (
+      <div
+        key={i}
+        className={
+          showAnswer[i]
+            ? `${styles['questionItem']} ${styles['showAnswer']}`
+            : styles['questionItem']
+        }
+      >
+        <h3 onClick={() => handleQuestionClick(i)}>
+          {q.question}
+          {showAnswer[i] ? <FaTimes /> : <FaPlus />}
+        </h3>
+        <div className={styles['answerContainer']}>
+          <ul>
+            {q.answer.map((a, i) => (
+              <li key={i}>{a}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles['askedQuestionsContainer']}>
       <h2>Frequently Asked Questions</h2>
-      {askedQuestions.map((q, index) => (
-        <div key={index} className={styles['questionItem']}>
-          <h3 onClick={() => handleQuestionClick(index)}>
-            {q.question}
-            {showAnswer[index] ? <FaTimes /> : <FaPlus />}
-          </h3>
-          {showAnswer[index] && (
-            <ul>
-              {q.answer.map((a, i) => (
-                <li key={i}>{a}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+      {askedQuestions.map(renderQuestion)}
     </div>
   );
 };
