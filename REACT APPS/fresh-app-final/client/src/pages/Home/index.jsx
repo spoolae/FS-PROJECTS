@@ -10,11 +10,11 @@ import carouselConstants from '../../carouselConstants';
 import Spinner from '../../components/Spinner/Spinner';
 import Advantage from '../../components/Advantage';
 import CollectionNames from '../../components/CollectionNames/CollectionNames';
+import AskedQuestions from '../../components/AskedQuestions/AskedQuestions';
 
 const Home = (props) => {
   const [index, setIndex] = useState(0);
   const [styleName, setStyle] = useState(styles.headline__static);
-  //let timeout;
 
   useEffect(() => {
     let timeout = setInterval(() => {
@@ -216,6 +216,7 @@ const Home = (props) => {
               />
             </div>
           </div>
+          <AskedQuestions />
           <Footer />
         </>
       )}

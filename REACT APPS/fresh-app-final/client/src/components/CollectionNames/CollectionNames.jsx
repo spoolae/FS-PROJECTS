@@ -29,7 +29,7 @@ const CollectionNames = () => {
         Explore themed brand name collections created by our experienced team of
         branding experts
       </p>
-      {namesBtn.map(renderBtn)}
+      <div className={styles.btnContainer}>{namesBtn.map(renderBtn)}</div>
     </section>
   );
 };
