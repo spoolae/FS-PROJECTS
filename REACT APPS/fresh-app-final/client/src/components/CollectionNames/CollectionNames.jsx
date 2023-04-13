@@ -3,9 +3,9 @@ import cx from 'classnames';
 import styles from './CollectionNames.module.scss';
 
 const namesBtn = [
-  { id: 1, name: 'top categories' },
-  { id: 2, name: 'top industry' },
-  { id: 3, name: 'top ideas' },
+  { id: 1, name: 'Top Categories' },
+  { id: 2, name: 'Top Industry' },
+  { id: 3, name: 'Top Ideas' },
 ];
 
 const CollectionNames = () => {
