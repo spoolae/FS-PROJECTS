@@ -49,8 +49,8 @@ const PricingItem = ({ pricingItem }) => {
             <div>
               <p>{validationValue}</p>
               <ul>
-                {validationBenefits.map((item) => (
-                  <li>{item}</li>
+                {validationBenefits.map((item, i) => (
+                  <li key={i}>{item}</li>
                 ))}
               </ul>
             </div>

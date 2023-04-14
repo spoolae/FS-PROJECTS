@@ -5,7 +5,9 @@ import pricingList from './pricingList';
 import PricingItem from '../../components/PricingItem/PricingItem';
 
 const PricingPage = () => {
-  const renderPricingItem = (item) => <PricingItem pricingItem={item} />;
+  const renderPricingItem = (item) => (
+    <PricingItem pricingItem={item} key={item.name} />
+  );
 
   return (
     <div className={styles['pricingPageContainer']}>
