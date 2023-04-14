@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaPlus, FaTimes } from 'react-icons/fa';
 import styles from './AskedQuestions.module.scss';
-import askedQuestions from './askedQuestions.json';
+import askedQuestionsList from './askedQuestionsList';
 
 const AskedQuestions = () => {
   const [showAnswer, setShowAnswer] = useState({});
@@ -36,7 +36,7 @@ const AskedQuestions = () => {
   return (
     <div className={styles['askedQuestionsContainer']}>
       <h2>Frequently Asked Questions</h2>
-      {askedQuestions.map(renderQuestion)}
+      {askedQuestionsList.map(renderQuestion)}
     </div>
   );
 };
