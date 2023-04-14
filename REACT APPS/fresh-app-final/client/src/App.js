@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -17,6 +17,7 @@ import { WithAuth, WithNotAuth } from './components/HOCs';
 import ChatContainer from './components/Chat/ChatComponents/ChatContainer/ChatContainer';
 import CONSTANTS from './constants';
 import browserHistory from './browserHistory';
+import PricingPage from './pages/PricingPage/PricingPage';
 
 class App extends Component {
   render() {
@@ -47,6 +48,7 @@ class App extends Component {
             path="/startContest"
             component={WithAuth(StartContestPage)}
           />
+          <Route exact path="/pricing" component={PricingPage} />
           <Route
             exact
             path="/startContest/nameContest"
