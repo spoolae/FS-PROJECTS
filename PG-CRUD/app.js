@@ -13,8 +13,7 @@ app
 app
   .route("/things/:idThing")
   .put(ThingController.updateThing)
-  .delete(ThingController.deleteThing);
-
-// .get(ThingController.findThing)
+  .delete(ThingController.deleteThing)
+  .get(ThingController.findThing);
 
 module.exports = app;

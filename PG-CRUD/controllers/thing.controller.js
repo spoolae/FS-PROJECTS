@@ -55,3 +55,18 @@ module.exports.deleteThing = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.findThing = async (req, res, next) => {
+  try {
+    const {
+      params: { idThing },
+    } = req;
+    const [foundThing] = await Thing.findByPk(idThing);
+    if (!foundThing) {
+      return res.status(404).send("Thing not found");
+    }
+    return res.status(200).send(foundThing);
+  } catch (error) {
+    next(error);
+  }
+};
