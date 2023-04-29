@@ -10,8 +10,11 @@ app
   .post(ThingController.createThing)
   .get(ThingController.findAllThing);
 
-app.route("/things/:idThing").put(ThingController.updateThing);
+app
+  .route("/things/:idThing")
+  .put(ThingController.updateThing)
+  .delete(ThingController.deleteThing);
+
 // .get(ThingController.findThing)
-// .delete(ThingController.deleteThing)
 
 module.exports = app;

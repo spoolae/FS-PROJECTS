@@ -1,27 +1,29 @@
 class Thing {
   static client = null;
-  static tableName = 'things';
+  static tableName = "things";
 
   static attributes = {
-    description: 'string'
-  }
+    description: "string",
+  };
 
   static async create(values) {
     try {
       const insertAttrs = Object.entries(this.attributes)
         .filter(([attr, type]) => attr in values)
-        .map(([attr, type]) => attr)
-      const insertAttrsStr = insertAttrs.map((attr)=> `"${attr}"`).join(',');
-      const insertValuesStr = insertAttrs.map((attr) => {
-        const value = values[attr];
-        return typeof value === 'string' ? `'${value}'` : value;
-      }).join(',');
+        .map(([attr, type]) => attr);
+      const insertAttrsStr = insertAttrs.map((attr) => `"${attr}"`).join(",");
+      const insertValuesStr = insertAttrs
+        .map((attr) => {
+          const value = values[attr];
+          return typeof value === "string" ? `'${value}'` : value;
+        })
+        .join(",");
 
-      const {rows} = await this.client.query(`
+      const { rows } = await this.client.query(`
         INSERT INTO ${this.tableName} (${insertAttrsStr})
         VALUES (${insertValuesStr})
         RETURNING *
-      `)
+      `);
       return rows;
     } catch (error) {
       console.log(error);
@@ -30,7 +32,7 @@ class Thing {
   }
   static async findAll() {
     try {
-      const {rows} = await this.client.query(`
+      const { rows } = await this.client.query(`
         SELECT * 
         FROM ${this.tableName}
       `);
@@ -42,7 +44,7 @@ class Thing {
   }
   static async findByPk(pk) {
     try {
-      const {rows} = await this.client.query(`
+      const { rows } = await this.client.query(`
         SELECT * 
         FROM ${this.tableName}
         WHERE "id"=${pk}
@@ -59,25 +61,39 @@ class Thing {
         .filter(([attr, type]) => attr in values)
         .map(([attr, type]) => attr);
 
-      const updateStr = insertAttrs.map((attr)=> {
-        const value = values[attr];
-        const valueStr = typeof value === 'string' ? `'${value}'` : value;
-        return `"${attr}"=${valueStr}`
-      }).join(',');
+      const updateStr = insertAttrs
+        .map((attr) => {
+          const value = values[attr];
+          const valueStr = typeof value === "string" ? `'${value}'` : value;
+          return `"${attr}"=${valueStr}`;
+        })
+        .join(",");
 
-      const {rows} = await this.client.query(`
+      const { rows } = await this.client.query(`
         UPDATE ${this.tableName} 
         SET ${updateStr}, "updatedAt"='${new Date().toISOString()}'
         WHERE "id"=${pk}
         RETURNING *
-      `)
+      `);
       return rows;
     } catch (error) {
       console.log(error);
       return error;
     }
   }
-  static async deleteByPk() {}
+  static async deleteByPk(pk) {
+    try {
+      const { rows } = await this.client.query(`
+        DELETE FROM ${this.tableName}
+        WHERE "id"=${pk}
+        RETURNING *
+      `);
+      return rows;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
 }
 
 module.exports = Thing;
