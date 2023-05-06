@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
+    "password": "admin",
     "database": "fd2022_sequelize",
     "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "postgres",
+    "password": "admin",
     "database": "fd2022_sequelize_test",
     "host": "localhost",
     "dialect": "postgres"
