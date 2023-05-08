@@ -167,13 +167,15 @@ module.exports.deleteGroup = async (req, res, next) => {
       params: { idGroup },
     } = req;
 
-    const numDeletedRows = await Group.destroy({ where: { id: idGroup } });
+    const group = await Group.findOne({ where: { id: idGroup } });
 
-    if (numDeletedRows === 0) {
+    if (!group) {
       return next(createError(404, "Group not found"));
     }
 
-    res.sendStatus(204);
+    await Group.destroy({ where: { id: idGroup } });
+
+    res.status(200).json(group);
   } catch (error) {
     next(error);
   }
