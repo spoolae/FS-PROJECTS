@@ -19,7 +19,11 @@ groupRouter.patch(
 );
 
 // update group
-groupRouter.put("/:idGroup", GroupController.updateGroup);
+groupRouter.put(
+  "/:idGroup",
+  upload.single("image"),
+  GroupController.updateGroup
+);
 
 // delete group
 groupRouter.delete("/:idGroup", GroupController.deleteGroup);

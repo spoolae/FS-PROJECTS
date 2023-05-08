@@ -144,16 +144,21 @@ module.exports.getUsersInGroup = async (req, res, next) => {
 module.exports.updateGroup = async (req, res, next) => {
   try {
     const {
+      file: { filename },
       params: { idGroup },
       body,
     } = req;
 
-    const [, [updatedGroup]] = await Group.update(pickBody(body), {
+    const groupData = {
+      ...body,
+      imagePath: filename,
+    };
+
+    const [, [groupUpdated]] = await Group.update(groupData, {
       where: { id: idGroup },
       returning: true,
     });
-
-    res.status(200).send({ data: updatedGroup });
+    res.status(200).send({ data: groupUpdated });
   } catch (error) {
     next(error);
   }
