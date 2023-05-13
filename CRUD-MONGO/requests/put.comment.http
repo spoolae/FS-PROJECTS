@@ -1,0 +1,7 @@
+PUT http://localhost:3000/comments/645f8ea193a9c1476eda6770
+Content-Type: application/json
+
+
+{
+  "bodyComment": "New body comment"
+}
