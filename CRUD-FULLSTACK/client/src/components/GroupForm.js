@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
-import { createGroup } from '../../store/groupsSlice';
+
+import { createGroup } from '../store/groupsSlice';
 
 const GroupForm = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const GroupForm = () => {
             <input
               name="imageGroup"
               type="file"
-              onChange={({target}) =>
+              onChange={({ target }) =>
                 formikProps.setFieldValue('imageGroup', target.files[0])
               }
             />

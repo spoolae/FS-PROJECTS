@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
-import { createUser } from '../../store/usersSlice';
+
+import { createUser } from '../store/usersSlice';
 
 const UserForm = () => {
   const { isFetching, error } = useSelector((state) => state.users);
