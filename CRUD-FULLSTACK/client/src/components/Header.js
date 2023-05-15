@@ -2,22 +2,22 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
+  const headerTabs = [
+    { link: '/', label: 'Home' },
+    { link: '/users', label: 'Users' },
+    { link: '/group-create', label: 'Group create' },
+    { link: '/registration', label: 'Registration' },
+  ];
+
   return (
-    <nav>
-      <ol>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/users">Users</NavLink>
-        </li>
-        <li>
-          <NavLink to="/group-create">group create</NavLink>
-        </li>
-        <li>
-          <NavLink to="/registration">registration</NavLink>
-        </li>
-      </ol>
+    <nav className="header">
+      <ul>
+        {headerTabs.map((tab) => (
+          <li key={tab.link}>
+            <NavLink to={tab.link}>{tab.label}</NavLink>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };
