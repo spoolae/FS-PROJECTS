@@ -12,7 +12,7 @@ const UserCard = ({ user }) => {
   };
 
   return (
-    <li key={user.id} className="user-card">
+    <li className="user-card">
       <div>
         <div className="user-avatar" onClick={handleOpenUser}>
           <img src={userAvatar} alt="user" />
