@@ -4,7 +4,7 @@ import UserCard from './UserCard';
 
 const UsersList = ({ users }) => {
   return (
-    <div>
+    <div className="user-list">
       <ul>
         {users.map((user) => (
           <UserCard user={user} />

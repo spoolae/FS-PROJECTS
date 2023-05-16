@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 body {
+  width: 100vw;
+  overflow-x: hidden;
   font-family: 'Ubuntu', sans-serif;
 }
 
 .app {
+  a {
+    color: black;
+  }
+
   .header {
     width: 100vw;
     background-color: white;
@@ -18,7 +24,6 @@ body {
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      list-style-type: none;
       width: fit-content;
       border-radius: 25px;
       overflow: hidden;
@@ -39,6 +44,86 @@ body {
         &.active {
           background-color: rgb(70, 70, 70);
           color: white;
+        }
+      }
+    }
+  }
+
+  .user-list {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+
+    .user-card {
+      width: 50vw;
+      margin-bottom: 15px;
+      padding: 25px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .user-avatar {
+        width: 10%;
+        aspect-ratio: 1;
+        min-width: 50px;
+        margin-right: 15px;
+        border-radius: 15px;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+
+        &:hover::after {
+          content: 'Show User';
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          inset: 0;
+          text-align: center;
+          font-size: 14px;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.15);
+          color: white;
+        }
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h3 {
+        text-transform: uppercase;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      p {
+        color: rgb(168, 168, 168);
+      }
+
+      > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .icon {
+          color: rgb(92, 92, 92);
+          font-size: 36px;
+          padding: 7px;
+          margin: 2px;
+          cursor: pointer;
+
+          &#red:hover {
+            color: rgb(255, 55, 55);
+            transform: scale(1.1);
+          }
+
+          &#blue:hover {
+            color: rgb(47, 75, 215);
+            transform: scale(1.1);
+          }
         }
       }
     }

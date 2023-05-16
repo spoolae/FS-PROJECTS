@@ -12,7 +12,7 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Suspense fallback={<Loader />}>
-          <AppRoutes />
+          <AppRoutes className="app-content" />
         </Suspense>
       </BrowserRouter>
     </div>
