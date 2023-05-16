@@ -1,9 +1,17 @@
-const createError = require('http-errors');
-const _ = require('lodash');
-const { Op } = require('sequelize');
-const { User } = require('../models');
+const createError = require("http-errors");
+const _ = require("lodash");
+const { Op } = require("sequelize");
+const { User } = require("../models");
 
-const pickBody = (body) => _.pick(body, ['firstName', 'lastName', 'email', 'password', 'birthday', 'isMale']);
+const pickBody = (body) =>
+  _.pick(body, [
+    "firstName",
+    "lastName",
+    "email",
+    "password",
+    "birthday",
+    "isMale",
+  ]);
 
 module.exports.createUser = async (req, res, next) => {
   try {
@@ -11,7 +19,7 @@ module.exports.createUser = async (req, res, next) => {
     const values = pickBody(body);
     const newUser = await User.create(values);
     if (!newUser) {
-      return next(createError(400, 'Bad request'));
+      return next(createError(400, "Bad request"));
     }
     const user = newUser.get();
     delete user.password;
@@ -25,11 +33,11 @@ module.exports.getAllUsers = async (req, res, next) => {
   try {
     const { pagination = {} } = req;
     const users = await User.findAll({
-      attributes: { exclude: ['password', 'createdAt', 'updatedAt'] },
+      attributes: { exclude: ["password", "createdAt", "updatedAt"] },
       ...pagination,
     });
     if (users.length === 0) {
-      return next(createError(404, 'Users not found'));
+      return next(createError(404, "Users not found"));
     }
     res.status(200).send({ data: users });
   } catch (error) {
@@ -87,6 +95,15 @@ module.exports.deleteUserInstance = async (req, res, next) => {
     const { userInstance } = req;
     await userInstance.destroy();
     res.status(200).send({ data: userInstance });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getUsersCount = async (req, res, next) => {
+  try {
+    const count = await User.count();
+    res.status(200).send({ count });
   } catch (error) {
     next(error);
   }
