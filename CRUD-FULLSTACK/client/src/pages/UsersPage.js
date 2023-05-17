@@ -22,7 +22,7 @@ const UsersPage = () => {
   }, [dispatch, offset]);
 
   const handlePrevPage = () => {
-    if (offset >= ITEMS_PER_PAGE) {
+    if (offset - ITEMS_PER_PAGE >= 0) {
       setOffset(offset - ITEMS_PER_PAGE);
     }
   };
@@ -30,8 +30,6 @@ const UsersPage = () => {
   const handleNextPage = () => {
     if (offset + ITEMS_PER_PAGE < usersCount) {
       setOffset(offset + ITEMS_PER_PAGE);
-    } else {
-      console.log(usersCount);
     }
   };
 

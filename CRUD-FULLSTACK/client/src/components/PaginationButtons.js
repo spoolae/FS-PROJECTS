@@ -8,15 +8,15 @@ const PaginationButtons = ({
   onNextPage,
   itemsPerPage,
 }) => {
+  const isFirstPage = offset === 0;
+  const isLastPage = offset + itemsPerPage >= usersCount;
+
   return (
     <div className="pagination-buttons">
-      <div onClick={onPrevPage} className={offset === 0 ? 'disabled' : null}>
+      <div onClick={onPrevPage} className={isFirstPage ? 'disabled' : null}>
         <FaArrowLeft />
       </div>
-      <div
-        onClick={onNextPage}
-        className={offset + itemsPerPage >= usersCount ? 'disabled' : null}
-      >
+      <div onClick={onNextPage} className={isLastPage ? 'disabled' : null}>
         <FaArrowRight />
       </div>
     </div>
