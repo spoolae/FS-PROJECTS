@@ -18,17 +18,9 @@ userRouter.get("/count", UserController.getUsersCount);
 userRouter.get("/:idUser", checkUser, UserController.getUserByPk);
 
 //Update
-userRouter.put(
-  "/:idUser/instance",
-  checkUser,
-  UserController.updateUserInstance
-);
+userRouter.put("/:idUser", checkUser, UserController.updateUser);
 
 //Delete
-userRouter.delete(
-  "/:idUser/instance",
-  checkUser,
-  UserController.deleteUserInstance
-);
+userRouter.delete("/:idUser", checkUser, UserController.deleteUser);
 
 module.exports = userRouter;

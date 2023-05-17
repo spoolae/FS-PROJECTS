@@ -56,7 +56,7 @@ module.exports.getUserByPk = async (req, res, next) => {
   }
 };
 
-module.exports.updateUserInstance = async (req, res, next) => {
+module.exports.updateUser = async (req, res, next) => {
   try {
     const { body, userInstance } = req;
     const values = pickBody(body);
@@ -71,7 +71,7 @@ module.exports.updateUserInstance = async (req, res, next) => {
   }
 };
 
-module.exports.deleteUserInstance = async (req, res, next) => {
+module.exports.deleteUser = async (req, res, next) => {
   try {
     const { userInstance } = req;
     await userInstance.destroy();

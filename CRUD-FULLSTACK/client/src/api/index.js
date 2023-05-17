@@ -23,8 +23,7 @@ export const getUsers = (options = {}) => {
 
 export const getUser = (idUser) => httpClient.get(`/users/${idUser}`);
 
-export const deleteUser = (idUser) =>
-  httpClient.delete(`/users/${idUser}/instance`);
+export const deleteUser = (idUser) => httpClient.delete(`/users/${idUser}`);
 
 export const getUsersCount = () => httpClient.get('/users/count');
 
