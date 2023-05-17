@@ -14,8 +14,7 @@ export const getUsers = (options = {}) => {
     ...defaultOptions,
     ...options,
   };
-
-  console.log(httpClient.get(`/users?${qs.stringify(finallyOptions)}`));
+  console.log(qs.stringify(finallyOptions));
   return httpClient.get(`/users?${qs.stringify(finallyOptions)}`);
 };
 
@@ -24,8 +23,6 @@ export const getUser = (idUser) => httpClient.get(`/users/${idUser}`);
 export const postUser = (values) => httpClient.post('/users', values);
 
 export const getUsersCount = () => httpClient.get('/users/count');
-
-console.log(httpClient.get('/users/count'));
 
 export const postGroup = (values) =>
   httpClient.post('/groups', values, {

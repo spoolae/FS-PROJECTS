@@ -60,10 +60,9 @@ const usersSlice = createSlice({
       state.currentUser = action.payload.data;
     });
     builder.addCase(getUsersCount.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.isFetching = false;
       state.error = null;
-      state.usersCount = action.payload;
+      state.usersCount = action.payload.count;
     });
   },
 });

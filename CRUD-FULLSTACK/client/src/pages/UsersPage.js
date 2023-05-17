@@ -1,27 +1,56 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import UsersList from '../components/UserList';
 import Loader from './../components/Loader';
 import { getAllUsers, getUsersCount } from '../store/usersSlice';
 import Error from '../components/Error';
+import PaginationButtons from '../components/PaginationButtons';
+
+const ITEMS_PER_PAGE = 10;
 
 const UsersPage = () => {
   const dispatch = useDispatch();
   const { isFetching, error, users, usersCount } = useSelector(
     (state) => state.users
   );
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
-    dispatch(getAllUsers({ limit: 5, offset: 0 }));
+    dispatch(getAllUsers({ limit: ITEMS_PER_PAGE, offset }));
     dispatch(getUsersCount());
-  }, [dispatch]);
+  }, [dispatch, offset]);
+
+  const handlePrevPage = () => {
+    if (offset >= ITEMS_PER_PAGE) {
+      setOffset(offset - ITEMS_PER_PAGE);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (offset + ITEMS_PER_PAGE < usersCount) {
+      setOffset(offset + ITEMS_PER_PAGE);
+    } else {
+      console.log(usersCount);
+    }
+  };
 
   return (
     <div>
       {isFetching && <Loader />}
       {error && <Error />}
-      {!isFetching && !error && <UsersList users={users} />}
+      {!isFetching && !error && (
+        <div>
+          <UsersList users={users} />
+          <PaginationButtons
+            offset={offset}
+            usersCount={usersCount}
+            onPrevPage={handlePrevPage}
+            onNextPage={handleNextPage}
+            itemsPerPage={ITEMS_PER_PAGE}
+          />
+        </div>
+      )}
     </div>
   );
 };
