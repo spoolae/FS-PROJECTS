@@ -65,7 +65,6 @@ module.exports.updateUserStatic = async (req, res, next) => {
     const values = pickBody(body);
     const [, [updatedUser]] = await User.update(values, {
       where: { id: idUser },
-      //returning: ['id', 'email']
       returning: true,
     });
     updatedUser.password = undefined;

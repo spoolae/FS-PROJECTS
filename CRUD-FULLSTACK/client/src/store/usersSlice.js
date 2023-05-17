@@ -21,6 +21,10 @@ export const getUsersCount = decorateAsyncThunk({
   type: 'users/getUsersCount',
   thunk: httpClient.getUsersCount,
 });
+export const deleteUser = decorateAsyncThunk({
+  type: 'users/deleteUser',
+  thunk: httpClient.deleteUser,
+});
 
 const usersSlice = createSlice({
   name: 'users',
@@ -38,11 +42,13 @@ const usersSlice = createSlice({
     builder.addCase(createUser.pending, pendingReducer);
     builder.addCase(getOneUser.pending, pendingReducer);
     builder.addCase(getUsersCount.pending, pendingReducer);
+    builder.addCase(deleteUser.pending, pendingReducer);
 
     builder.addCase(getAllUsers.rejected, rejectedReducer);
     builder.addCase(createUser.rejected, rejectedReducer);
     builder.addCase(getOneUser.rejected, rejectedReducer);
     builder.addCase(getUsersCount.rejected, rejectedReducer);
+    builder.addCase(deleteUser.rejected, rejectedReducer);
 
     builder.addCase(getAllUsers.fulfilled, (state, action) => {
       state.isFetching = false;
@@ -63,6 +69,14 @@ const usersSlice = createSlice({
       state.isFetching = false;
       state.error = null;
       state.usersCount = action.payload.count;
+    });
+    builder.addCase(deleteUser.fulfilled, (state, action) => {
+      state.isFetching = false;
+      state.error = null;
+      console.log(action.payload);
+      state.users = state.users.filter(
+        (user) => user.id !== action.payload.data.id
+      );
     });
   },
 });
