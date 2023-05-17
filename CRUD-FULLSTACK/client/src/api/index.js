@@ -5,6 +5,10 @@ const httpClient = axios.create({
   baseURL: 'http://localhost:3000/api',
 });
 
+//Users
+
+export const postUser = (values) => httpClient.post('/users', values);
+
 export const getUsers = (options = {}) => {
   const defaultOptions = {
     limit: 10,
@@ -19,14 +23,16 @@ export const getUsers = (options = {}) => {
 
 export const getUser = (idUser) => httpClient.get(`/users/${idUser}`);
 
-export const postUser = (values) => httpClient.post('/users', values);
-
 export const deleteUser = (idUser) =>
   httpClient.delete(`/users/${idUser}/instance`);
 
 export const getUsersCount = () => httpClient.get('/users/count');
 
+//Groups
+
 export const postGroup = (values) =>
   httpClient.post('/groups', values, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
+
+//Tasks

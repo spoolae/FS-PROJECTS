@@ -5,20 +5,26 @@ const { paginate } = require("../middlewares/paginate.mw");
 
 const userRouter = Router();
 
+//Create
 userRouter
   .route("/")
   .post(UserController.createUser)
   .get(paginate, UserController.getAllUsers);
 
+//Get count
 userRouter.get("/count", UserController.getUsersCount);
 
+//Read
 userRouter.get("/:idUser", checkUser, UserController.getUserByPk);
-userRouter.put("/:idUser/static", UserController.updateUserStatic);
+
+//Update
 userRouter.put(
   "/:idUser/instance",
   checkUser,
   UserController.updateUserInstance
 );
+
+//Delete
 userRouter.delete(
   "/:idUser/instance",
   checkUser,

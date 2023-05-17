@@ -73,7 +73,6 @@ const usersSlice = createSlice({
     builder.addCase(deleteUser.fulfilled, (state, action) => {
       state.isFetching = false;
       state.error = null;
-      console.log(action.payload);
       state.users = state.users.filter(
         (user) => user.id !== action.payload.data.id
       );

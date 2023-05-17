@@ -56,24 +56,6 @@ module.exports.getUserByPk = async (req, res, next) => {
   }
 };
 
-module.exports.updateUserStatic = async (req, res, next) => {
-  try {
-    const {
-      body,
-      params: { idUser },
-    } = req;
-    const values = pickBody(body);
-    const [, [updatedUser]] = await User.update(values, {
-      where: { id: idUser },
-      returning: true,
-    });
-    updatedUser.password = undefined;
-    res.status(200).send({ data: updatedUser });
-  } catch (error) {
-    next(error);
-  }
-};
-
 module.exports.updateUserInstance = async (req, res, next) => {
   try {
     const { body, userInstance } = req;
