@@ -7,30 +7,29 @@ const httpClient = axios.create({
 
 //Users
 
-export const postUser = (values) => httpClient.post('/users', values);
+export const postUser = (user) => httpClient.post('/users', user);
 
-export const getUsers = (options = {}) => {
-  const defaultOptions = {
+export const getUsers = (options) => {
+  const finallyOptions = {
     limit: 10,
     offset: 0,
-  };
-  const finallyOptions = {
-    ...defaultOptions,
     ...options,
   };
   return httpClient.get(`/users?${qs.stringify(finallyOptions)}`);
 };
 
-export const getUser = (idUser) => httpClient.get(`/users/${idUser}`);
+export const getUser = (userId) => httpClient.get(`/users/${userId}`);
 
-export const deleteUser = (idUser) => httpClient.delete(`/users/${idUser}`);
+export const updateUser = (user) => httpClient.put(`/users/${user.id}`, user);
+
+export const deleteUser = (userId) => httpClient.delete(`/users/${userId}`);
 
 export const getUsersCount = () => httpClient.get('/users/count');
 
 //Groups
 
-export const postGroup = (values) =>
-  httpClient.post('/groups', values, {
+export const postGroup = (group) =>
+  httpClient.post('/groups', group, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
 

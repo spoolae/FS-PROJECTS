@@ -35,6 +35,7 @@ module.exports.getAllUsers = async (req, res, next) => {
     const users = await User.findAll({
       attributes: { exclude: ["password", "createdAt", "updatedAt"] },
       ...pagination,
+      order: [["id", "ASC"]],
     });
     if (users.length === 0) {
       return next(createError(404, "Users not found"));

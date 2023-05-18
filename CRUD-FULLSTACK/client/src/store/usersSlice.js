@@ -6,17 +6,14 @@ export const getOneUser = decorateAsyncThunk({
   type: 'users/getOneUser',
   thunk: httpClient.getUser,
 });
-
 export const createUser = decorateAsyncThunk({
   type: 'users/createUser',
   thunk: httpClient.postUser,
 });
-
 export const getAllUsers = decorateAsyncThunk({
   type: 'users/getAllUsers',
   thunk: httpClient.getUsers,
 });
-
 export const getUsersCount = decorateAsyncThunk({
   type: 'users/getUsersCount',
   thunk: httpClient.getUsersCount,
@@ -24,6 +21,10 @@ export const getUsersCount = decorateAsyncThunk({
 export const deleteUser = decorateAsyncThunk({
   type: 'users/deleteUser',
   thunk: httpClient.deleteUser,
+});
+export const updateUser = decorateAsyncThunk({
+  type: 'users/updateUser',
+  thunk: httpClient.updateUser,
 });
 
 const usersSlice = createSlice({
@@ -43,12 +44,14 @@ const usersSlice = createSlice({
     builder.addCase(getOneUser.pending, pendingReducer);
     builder.addCase(getUsersCount.pending, pendingReducer);
     builder.addCase(deleteUser.pending, pendingReducer);
+    builder.addCase(updateUser.pending, pendingReducer);
 
     builder.addCase(getAllUsers.rejected, rejectedReducer);
     builder.addCase(createUser.rejected, rejectedReducer);
     builder.addCase(getOneUser.rejected, rejectedReducer);
     builder.addCase(getUsersCount.rejected, rejectedReducer);
     builder.addCase(deleteUser.rejected, rejectedReducer);
+    builder.addCase(updateUser.rejected, rejectedReducer);
 
     builder.addCase(getAllUsers.fulfilled, (state, action) => {
       state.isFetching = false;
@@ -76,6 +79,16 @@ const usersSlice = createSlice({
       state.users = state.users.filter(
         (user) => user.id !== action.payload.data.id
       );
+    });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+      state.isFetching = false;
+      state.error = null;
+      state.users = state.users.map((user) => {
+        if (user.id === action.payload.data.id) {
+          return action.payload.data;
+        }
+        return user;
+      });
     });
   },
 });

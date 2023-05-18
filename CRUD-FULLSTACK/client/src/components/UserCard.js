@@ -4,7 +4,7 @@ import { FaTimes, FaUserEdit, FaCheck, FaTimesCircle } from 'react-icons/fa';
 
 import userAvatar from '../images/user-avatar.png';
 import { useDispatch } from 'react-redux';
-import { deleteUser } from '../store/usersSlice';
+import { deleteUser, updateUser } from '../store/usersSlice';
 
 const UserCard = ({ user }) => {
   const navigate = useNavigate();
@@ -27,8 +27,12 @@ const UserCard = ({ user }) => {
   };
 
   const handleSaveClick = () => {
-    console.log('New First Name:', firstName);
-    console.log('New Last Name:', lastName);
+    const updatedUser = {
+      ...user,
+      firstName: firstName,
+      lastName: lastName,
+    };
+    dispatch(updateUser(updatedUser));
     setEditing(false);
   };
 
