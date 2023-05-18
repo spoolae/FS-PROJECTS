@@ -1,30 +1,62 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { FaEnvelope, FaCalendar, FaUser } from 'react-icons/fa';
 
+import userAvatar from '../images/user-avatar.png';
+import Error from './Error';
+import Loader from './Loader';
 import { getOneUser } from '../store/usersSlice';
 
 const UserProfile = () => {
   const dispatch = useDispatch();
   const { idUser } = useParams();
+
   useEffect(() => {
     dispatch(getOneUser(Number(idUser)));
   }, [dispatch, idUser]);
+
   const { currentUser, error, isFetching } = useSelector(
     (state) => state.users
   );
+
+  const profileContent = (
+    <div>
+      <div className="profile-content">
+        <img src={userAvatar} alt="user" />
+        {currentUser && (
+          <h3>
+            {currentUser.firstName} {currentUser.lastName}
+          </h3>
+        )}
+        {currentUser && (
+          <p>
+            <FaEnvelope /> {currentUser.email}
+          </p>
+        )}
+        {currentUser && (
+          <p>
+            <FaCalendar /> {currentUser.birthday}
+          </p>
+        )}
+        {currentUser && (
+          <p>
+            <FaUser /> {currentUser.isMale ? 'Male' : 'Female'}
+          </p>
+        )}
+      </div>
+      <Link to="/users" className="button">
+        Turn Back
+      </Link>
+    </div>
+  );
+
   return (
-    <>
-      {error && <p>{error}</p>}
-      {isFetching && <p>Loading...</p>}
-      {currentUser && (
-        <div>
-          Profile:
-          <h2>{currentUser.email}</h2>
-          <h3>{currentUser.firstName}</h3>
-        </div>
-      )}
-    </>
+    <div className="user-profile">
+      {isFetching && <Loader />}
+      {error && <Error />}
+      {!isFetching && !error && currentUser && profileContent}
+    </div>
   );
 };
 

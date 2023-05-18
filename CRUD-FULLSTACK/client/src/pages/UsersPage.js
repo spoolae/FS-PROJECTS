@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import UsersList from '../components/UserList';
+import UsersList from '../components/UsersList';
 import Loader from './../components/Loader';
 import { getAllUsers, getUsersCount } from '../store/usersSlice';
 import Error from '../components/Error';
 import PaginationButtons from '../components/PaginationButtons';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 5;
 
 const UsersPage = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const UsersPage = () => {
       {error && <Error />}
       {!isFetching && !error && (
         <div>
-          <UsersList users={users} />
+          <UsersList users={users} offset={offset} limit={ITEMS_PER_PAGE} />
           <PaginationButtons
             offset={offset}
             usersCount={usersCount}

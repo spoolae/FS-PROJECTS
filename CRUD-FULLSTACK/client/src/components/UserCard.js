@@ -4,9 +4,9 @@ import { FaTimes, FaUserEdit, FaCheck, FaTimesCircle } from 'react-icons/fa';
 
 import userAvatar from '../images/user-avatar.png';
 import { useDispatch } from 'react-redux';
-import { deleteUser, updateUser } from '../store/usersSlice';
+import { deleteUser, getAllUsers, updateUser } from '../store/usersSlice';
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, offset, limit }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,6 +20,7 @@ const UserCard = ({ user }) => {
 
   const handleDeleteUser = () => {
     dispatch(deleteUser(user.id));
+    dispatch(getAllUsers({ limit: limit + 1, offset: offset }));
   };
 
   const handleEditClick = () => {
