@@ -13,18 +13,22 @@ const UserForm = () => {
   const { isFetching, error } = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required('First Name is required'),
+    lastName: Yup.string().required('Last Name is required'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .required('Password is required'),
+    birthday: Yup.date().required('Birthday is required'),
+    isMale: Yup.boolean(),
+  });
+
   const onSubmit = (values) => {
     dispatch(createUser(values));
   };
-
-  const validationSchema = Yup.object({
-    firstName: Yup.string().required(),
-    lastName: Yup.string().required(),
-    email: Yup.string().email().required(),
-    password: Yup.string().min(6).required(),
-    birthday: Yup.date().required(),
-    isMale: Yup.boolean(),
-  });
 
   const initialValues = {
     firstName: '',
