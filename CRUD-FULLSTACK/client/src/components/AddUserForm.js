@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
+import { FaUser, FaEnvelope, FaLock, FaCalendar, FaMale } from 'react-icons/fa';
 
+import userAvatar from '../images/user-avatar.png';
 import { createUser } from '../store/usersSlice';
 import Error from './Error';
 import Loader from './Loader';
@@ -20,25 +22,42 @@ const UserForm = () => {
     email: '',
     password: '',
     birthday: '',
-    isMale: true,
+    isMale: false,
   };
 
   const addUserForm = (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      <Form>
-        <Field name="firstName" placeholder="firstName" />
-        <Field name="lastName" placeholder="lastName" />
-        <Field name="email" placeholder="email" />
-        <Field name="password" placeholder="password" />
-        <Field name="birthday" placeholder="birthday" />
-        <Field name="isMale" type="checkbox" />
-        <input type="submit" value="add new user" />
-      </Form>
-    </Formik>
+    <div className="add-user-form">
+      <img src={userAvatar} alt="user" />
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <Form>
+          <div className="form-row">
+            <FaUser />
+            <Field name="firstName" placeholder="First Name" />
+            <Field name="lastName" placeholder="Last Name" />
+            <FaUser />
+          </div>
+          <div className="form-row">
+            <FaEnvelope />
+            <Field name="email" placeholder="Email" />
+            <Field name="password" placeholder="Password" type="password" />
+            <FaLock />
+          </div>
+          <div className="form-row">
+            <FaCalendar />
+            <Field name="birthday" placeholder="Birthday" type="date" />
+            <Field type="checkbox" name="isMale" />
+            <FaMale />
+          </div>
+          <div className="form-row">
+            <input type="submit" value="Add User" />
+          </div>
+        </Form>
+      </Formik>
+    </div>
   );
 
   return (
-    <div className="add-user">
+    <div>
       {isFetching && <Loader />}
       {error && <Error />}
       {!isFetching && !error && addUserForm}
