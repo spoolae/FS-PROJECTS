@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { FaUser, FaEnvelope, FaLock, FaCalendar, FaMale } from 'react-icons/fa';
+import * as Yup from 'yup';
 
 import userAvatar from '../images/user-avatar.png';
 import { createUser } from '../store/usersSlice';
@@ -16,6 +17,15 @@ const UserForm = () => {
     dispatch(createUser(values));
   };
 
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required(),
+    lastName: Yup.string().required(),
+    email: Yup.string().email().required(),
+    password: Yup.string().min(6).required(),
+    birthday: Yup.date().required(),
+    isMale: Yup.boolean(),
+  });
+
   const initialValues = {
     firstName: '',
     lastName: '',
@@ -28,7 +38,11 @@ const UserForm = () => {
   const addUserForm = (
     <div className="add-user-form">
       <img src={userAvatar} alt="user" />
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
         <Form>
           <div className="form-row">
             <FaUser />
