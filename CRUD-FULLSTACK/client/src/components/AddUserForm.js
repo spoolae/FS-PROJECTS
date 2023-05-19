@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { FaUser, FaEnvelope, FaLock, FaCalendar, FaMale } from 'react-icons/fa';
 import * as Yup from 'yup';
 
@@ -18,6 +18,10 @@ const UserForm = () => {
     lastName: Yup.string().required('Last Name is required'),
     email: Yup.string()
       .email('Invalid email address')
+      .matches(
+        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+        'Invalid email format'
+      )
       .required('Email is required'),
     password: Yup.string()
       .min(6, 'Password must be at least 6 characters')
@@ -68,6 +72,33 @@ const UserForm = () => {
           </div>
           <div className="form-row">
             <input type="submit" value="Add User" />
+          </div>
+          <div className="form-errors">
+            <ErrorMessage
+              name="firstName"
+              component="div"
+              className="error-message"
+            />
+            <ErrorMessage
+              name="lastName"
+              component="div"
+              className="error-message"
+            />
+            <ErrorMessage
+              name="email"
+              component="div"
+              className="error-message"
+            />
+            <ErrorMessage
+              name="password"
+              component="div"
+              className="error-message"
+            />
+            <ErrorMessage
+              name="birthday"
+              component="div"
+              className="error-message"
+            />
           </div>
         </Form>
       </Formik>
