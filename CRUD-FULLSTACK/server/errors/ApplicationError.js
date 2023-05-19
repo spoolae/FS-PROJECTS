@@ -3,7 +3,7 @@ class ApplicationError extends Error {
     super();
     this.name = this.constructor.name;
     this.status = status || 500;
-    this.message = message || 'Application Error';
+    this.message = message || "Application Error!";
   }
 }
 

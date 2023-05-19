@@ -1,5 +1,6 @@
-const createError = require('http-errors');
-const { Task } = require('../models');
+const createError = require("http-errors");
+const { Task } = require("../models");
+
 module.exports.checkTask = async (req, res, next) => {
   try {
     const {
@@ -7,7 +8,7 @@ module.exports.checkTask = async (req, res, next) => {
     } = req;
     const task = await Task.findByPk(idTask);
     if (!task) {
-      return next(createError(404, 'Task not found'));
+      return next(createError(404, "Task not found!"));
     }
     req.taskInstance = task;
     next();
@@ -18,13 +19,10 @@ module.exports.checkTask = async (req, res, next) => {
 
 module.exports.checkIsUserTask = async (req, res, next) => {
   try {
-    const {
-      userInstance,
-      taskInstance
-    } = req;
+    const { userInstance, taskInstance } = req;
     const checkHas = await userInstance.hasTask(taskInstance);
     if (!checkHas) {
-      return next(createError(403, 'no action'));
+      return next(createError(403, "No action!"));
     }
     next();
   } catch (error) {

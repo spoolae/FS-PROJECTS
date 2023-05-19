@@ -19,7 +19,7 @@ module.exports.createUser = async (req, res, next) => {
     const values = pickBody(body);
     const newUser = await User.create(values);
     if (!newUser) {
-      return next(createError(400, "Bad request"));
+      return next(createError(400, "Bad request!"));
     }
     const user = newUser.get();
     delete user.password;
@@ -38,7 +38,7 @@ module.exports.getAllUsers = async (req, res, next) => {
       order: [["id", "ASC"]],
     });
     if (users.length === 0) {
-      return next(createError(404, "Users not found"));
+      return next(createError(404, "Users not found!"));
     }
     res.status(200).send({ data: users });
   } catch (error) {
