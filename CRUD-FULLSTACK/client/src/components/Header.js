@@ -5,8 +5,8 @@ const Header = () => {
   const headerTabs = [
     { link: '/', label: 'Home' },
     { link: '/users', label: 'Users' },
+    { link: '/registration', label: 'New user' },
     { link: '/group-create', label: 'Group create' },
-    { link: '/registration', label: 'Registration' },
   ];
 
   return (

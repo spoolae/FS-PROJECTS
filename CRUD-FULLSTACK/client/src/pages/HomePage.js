@@ -3,7 +3,7 @@ import React from 'react';
 const HomePage = () => {
   return (
     <section>
-      <h1>home</h1>
+      <h1 style={{ textAlign: 'center' }}>HOME</h1>
     </section>
   );
 };

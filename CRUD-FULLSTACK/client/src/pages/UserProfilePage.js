@@ -4,8 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import { FaEnvelope, FaCalendar, FaUser } from 'react-icons/fa';
 
 import userAvatar from '../images/user-avatar.png';
-import Error from './Error';
-import Loader from './Loader';
+import Error from '../components/Error';
+import Loader from '../components/Loader';
 import { getOneUser } from '../store/usersSlice';
 
 const UserProfile = () => {

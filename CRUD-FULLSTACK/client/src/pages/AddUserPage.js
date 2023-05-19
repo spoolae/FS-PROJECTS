@@ -1,10 +1,10 @@
 import React from 'react';
-import UserForm from '../components/UserForm';
+import AddUserForm from '../components/AddUserForm';
 
 const LogUpPage = () => {
   return (
     <div>
-      <UserForm />
+      <AddUserForm />
     </div>
   );
 };
