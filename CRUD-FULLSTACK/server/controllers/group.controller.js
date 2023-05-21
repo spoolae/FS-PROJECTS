@@ -128,6 +128,55 @@ module.exports.getUsersInGroup = async (req, res, next) => {
   }
 };
 
-//update group put
-//delete group
-//кількість юзерів в групі
+module.exports.updateGroup = async (req, res, next) => {
+  try {
+    const {
+      file: { filename },
+      params: { idGroup },
+      body,
+    } = req;
+    const groupData = {
+      ...body,
+      imagePath: filename,
+    };
+    const [, [groupUpdated]] = await Group.update(groupData, {
+      where: { id: idGroup },
+      returning: true,
+    });
+    res.status(200).send({ data: groupUpdated });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.deleteGroup = async (req, res, next) => {
+  try {
+    const {
+      params: { idGroup },
+    } = req;
+    const group = await Group.findOne({ where: { id: idGroup } });
+    if (!group) {
+      return next(createError(404, "Group not found"));
+    }
+    await Group.destroy({ where: { id: idGroup } });
+    res.status(200).json(group);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getGroupUsersCount = async (req, res, next) => {
+  try {
+    const {
+      params: { idGroup },
+    } = req;
+    const group = await Group.findByPk(idGroup);
+    if (!group) {
+      return next(createError(404, "Group not found"));
+    }
+    const usersCount = await group.countUsers();
+    res.status(200).send({ data: usersCount });
+  } catch (error) {
+    next(error);
+  }
+};
