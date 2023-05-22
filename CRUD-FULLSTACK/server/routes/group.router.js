@@ -9,7 +9,11 @@ groupRouter.post("/", upload.single("image"), GroupController.createGroup);
 
 groupRouter.get("/users/:idUser", GroupController.getUserGroups);
 
-groupRouter.patch("/:idGroup", checkGroup, GroupController.addUserAtGroup);
+groupRouter.patch(
+  "/:idGroup",
+  [checkGroup, upload.single("image")],
+  GroupController.addUserAtGroup
+);
 
 groupRouter.get("/:idGroup/users", GroupController.getUsersInGroup);
 
@@ -21,8 +25,7 @@ groupRouter.patch(
 
 groupRouter.put(
   "/:idGroup",
-  upload.single("image"),
-  checkGroup,
+  [checkGroup, upload.single("image")],
   GroupController.updateGroup
 );
 
